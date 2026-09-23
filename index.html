@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="es-BO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernando Dueñas | Inversión Inmobiliaria y Seguridad Jurídica — La Paz, Bolivia</title>
+<meta name="description" content="Asesoría en inversión inmobiliaria en La Paz, Bolivia. Fernando Dueñas analiza rentabilidad, plusvalía y riesgo registral de cada inmueble con el protocolo Trío Saneado: Folio Real, Ficha Catastral e Impuestos verificados. Achumani, Irpavi, Obrajes, Calacoto, Sopocachi.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Fernando Dueñas">
+<link rel="canonical" href="https://www.fernandoduenas.com.bo/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fernando Dueñas — Asesor Inmobiliario">
+<meta property="og:title" content="Fernando Dueñas | Inversión Inmobiliaria y Seguridad Jurídica en La Paz, Bolivia">
+<meta property="og:description" content="Asesoría para inversionistas: análisis de renta, plusvalía y riesgo registral. Inmuebles pre-auditados con el protocolo Trío Saneado.">
+<meta property="og:url" content="https://www.fernandoduenas.com.bo/">
+<meta property="og:image" content="https://www.fernandoduenas.com.bo/assets/fernando-duenas.jpg">
+<meta property="og:locale" content="es_BO">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fernando Dueñas | Inversión Inmobiliaria y Seguridad Jurídica en La Paz, Bolivia">
+<meta name="twitter:description" content="Asesoría para inversionistas inmobiliarios en La Paz: renta, plusvalía y verificación registral completa.">
+<meta name="twitter:image" content="https://www.fernandoduenas.com.bo/assets/fernando-duenas.jpg">
+
+<!-- Favicon (reemplazar por archivos reales) -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- Tailwind CSS (CDN de producción) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#F7F5F2',
+          ink:   { DEFAULT: '#141210', dark: '#0B0A09' },
+          rojo:  { DEFAULT: '#7C1F2A', dark: '#5E1620', light: '#A5333F' },
+          gris:  '#5C5955',
+          linea: '#E4E1DB'
+        },
+        fontFamily: {
+          serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+          sans:  ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+          mono:  ['"IBM Plex Mono"', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #F7F5F2; }
+
+  .folio-code { font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.02em; }
+
+  /* Enfoque de teclado visible — accesibilidad */
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid #7C1F2A;
+    outline-offset: 3px;
+  }
+
+  /* Respeta preferencia de movimiento reducido */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .icono-mas { transform: rotate(45deg); }
+  .icono-mas { transition: transform 0.2s ease; }
+
+  /* Animación única de entrada del hero — un solo momento orquestado */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-anim { animation: subir 0.7s ease-out both; }
+    .hero-anim-2 { animation: subir 0.7s ease-out 0.12s both; }
+    .hero-anim-3 { animation: subir 0.7s ease-out 0.24s both; }
+    @keyframes subir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  }
+
+  .menu-movil { transition: max-height 0.25s ease, opacity 0.2s ease; }
+
+  /* Opciones del orientador */
+  .quiz-opcion {
+    text-align: left;
+    width: 100%;
+    padding: 0.95rem 1.15rem;
+    border: 1px solid rgba(247, 245, 242, 0.18);
+    border-radius: 2px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(247, 245, 242, 0.9);
+    background: transparent;
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+  }
+  .quiz-opcion:hover {
+    border-color: #A5333F;
+    background-color: rgba(165, 51, 63, 0.10);
+  }
+
+  /* Filtros de propiedades */
+  .filtro-btn {
+    padding: 0.45rem 1rem;
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    border: 1px solid #E4E1DB;
+    border-radius: 9999px;
+    background: transparent;
+    color: #5C5955;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filtro-btn:hover { border-color: #7C1F2A; color: #7C1F2A; }
+  .filtro-btn.activo { background: #7C1F2A; color: #F7F5F2; border-color: #7C1F2A; }
+</style>
+
+<!-- ============================================================ -->
+<!-- SCHEMA.ORG JSON-LD — Marcado estructurado para GEO/AEO        -->
+<!-- ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "@id": "https://www.fernandoduenas.com.bo/#agente",
+  "name": "Fernando Dueñas",
+  "alternateName": "Fernando Dueñas — Asesor en Inversión Inmobiliaria",
+  "jobTitle": "Asesor Inmobiliario Senior · Especialista en Inversión Inmobiliaria y Seguridad Jurídica",
+  "description": "Asesor Inmobiliario Senior especializado en inversión inmobiliaria y seguridad jurídica en La Paz, Bolivia. Analiza rentabilidad por renta, potencial de plusvalía y riesgo registral de cada inmueble, y comercializa únicamente propiedades pre-auditadas mediante el protocolo Trío Saneado: Folio Real actualizado y libre de gravámenes, Ficha Catastral coincidente e Impuestos de Transferencia al día.",
+  "url": "https://www.fernandoduenas.com.bo/",
+  "image": "https://www.fernandoduenas.com.bo/assets/fernando-duenas.jpg",
+  "telephone": "+591 72056804",
+  "email": "n9ndodni@gmail.com",
+  "priceRange": "$$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle 31",
+    "addressLocality": "La Paz",
+    "addressRegion": "La Paz",
+    "addressCountry": "BO"
+  },
+  "hasMap": "https://www.google.com/maps/place/C.+31+8,+La+Paz/@-16.5184717,-68.0618021,17z/data=!4m6!3m5!1s0x915f216f96717c6d:0x66e8f079f4bcdc41!8m2!3d-16.5185185!4d-68.0609987!16s%2Fg%2F11j37g2y0b",
+  "areaServed": [
+    { "@type": "Place", "name": "Achumani, La Paz, Bolivia" },
+    { "@type": "Place", "name": "Irpavi, La Paz, Bolivia" },
+    { "@type": "Place", "name": "Obrajes, La Paz, Bolivia" },
+    { "@type": "Place", "name": "Calacoto, La Paz, Bolivia" },
+    { "@type": "Place", "name": "Sopocachi, La Paz, Bolivia" }
+  ],
+  "knowsAbout": [
+    "Inversión inmobiliaria en Bolivia",
+    "Rentabilidad por renta inmobiliaria",
+    "Plusvalía inmobiliaria en La Paz",
+    "Anticrético en Bolivia",
+    "Derecho registral boliviano",
+    "Folio Real",
+    "Ficha catastral municipal",
+    "Impuesto Municipal a la Transferencia",
+    "Intermediación inmobiliaria en Bolivia"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de asesoría inmobiliaria",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Asesoría en inversión inmobiliaria",
+          "description": "Análisis de inmuebles como activo de inversión: rentabilidad bruta y neta por renta, potencial de plusvalía por zona, costos de transacción y verificación registral previa a la compra."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Verificación registral Trío Saneado",
+          "description": "Auditoría documental de un inmueble: Folio Real actualizado sin gravámenes en Columna B, Ficha Catastral coincidente e Impuestos de Transferencia al día por cinco años."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Asesoría en compra de vivienda",
+          "description": "Acompañamiento desde la definición de presupuesto y zona hasta la firma notarial e inscripción en Derechos Reales."
+        }
+      }
+    ]
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/fernando-due%C3%B1as-487258150/",
+    "https://www.instagram.com/fernandoduenas.inmobiliaria/",
+    "https://wa.me/59172056804"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es el protocolo Trío Saneado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El Trío Saneado es el protocolo de verificación documental que Fernando Dueñas aplica antes de comercializar cualquier inmueble. Comprende tres controles: 1) Folio Real actualizado, con antigüedad menor a tres meses y sin gravámenes registrados en la Columna B; 2) Ficha Catastral municipal, verificando que la superficie y los datos técnicos coincidan con el Folio Real; 3) Impuestos de Transferencia (IMT) al día durante los últimos cinco años. Solo los inmuebles que aprueban los tres controles se publican en cartera."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es el Folio Real y por qué debe tener menos de tres meses de antigüedad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El Folio Real es el documento emitido por Derechos Reales que acredita la titularidad y el historial de gravámenes de un inmueble en Bolivia. Un folio con más de tres meses de antigüedad puede no reflejar hipotecas, anotaciones preventivas o embargos inscritos recientemente, por lo que se exige una emisión reciente antes de cualquier oferta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es la Columna B de un Folio Real?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La Columna B del Folio Real es la sección donde se registran los gravámenes, hipotecas, anotaciones preventivas, embargos y otras limitaciones sobre el inmueble. Un inmueble con la Columna B libre no tiene cargas registradas que puedan afectar la transferencia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué zonas de La Paz cubre Fernando Dueñas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El trabajo se concentra en las zonas sur y central-sur de La Paz: Achumani, Irpavi, Obrajes, Calacoto y Sopocachi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Fernando Dueñas trabaja con inversionistas y compradores fuera de Bolivia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Una parte de la cartera de clientes corresponde a inversionistas que operan de forma remota y requieren verificación documental completa antes de decidir, dado que no pueden inspeccionar el expediente registral de forma presencial."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se calcula la rentabilidad de un inmueble de inversión?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La rentabilidad bruta anual es la renta anual esperada dividida entre el precio total de adquisición. La rentabilidad neta descuenta de esa renta las expensas, el impuesto anual a la propiedad, el mantenimiento y una previsión de vacancia. Al precio de adquisición deben sumarse el Impuesto Municipal a la Transferencia, los gastos notariales, la inscripción en Derechos Reales y los honorarios de intermediación, porque modifican la rentabilidad efectiva."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es un anticrético en Bolivia y en qué se diferencia del alquiler?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En el anticrético, el interesado entrega al propietario una suma de dinero y ocupa el inmueble durante el plazo pactado sin pagar renta mensual; al vencimiento del contrato, el propietario restituye el capital. En el alquiler se paga una renta mensual y solo se inmoviliza una garantía menor. El anticrético elimina el gasto mensual de vivienda pero exige inmovilizar un capital importante, y su restitución depende de la capacidad de pago del propietario al vencimiento."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Conviene más comprar, alquilar o tomar un anticrético?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del horizonte de permanencia y de la necesidad de liquidez. A horizonte corto o con necesidad de disponer del capital en el corto plazo, el alquiler compromete menos recursos. A horizonte medio, con capital disponible que puede inmovilizarse, el anticrético reduce el gasto mensual de vivienda. A horizonte largo, con capacidad de comprometer capital o de acceder a crédito hipotecario, la compra construye patrimonio y captura la plusvalía de la zona."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto toma verificar una propiedad antes de ofrecerla?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El plazo depende de los tiempos de respuesta de Derechos Reales y del Gobierno Autónomo Municipal de La Paz para emitir el Folio Real y la Ficha Catastral actualizados, además de la revisión de los comprobantes de pago del Impuesto de Transferencia de los últimos cinco años."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://www.fernandoduenas.com.bo/#blog",
+  "name": "Blog de inversión inmobiliaria — Fernando Dueñas",
+  "description": "Criterios de análisis para invertir en inmuebles en La Paz, Bolivia: rentabilidad, plusvalía, anticrético y verificación registral.",
+  "inLanguage": "es-BO",
+  "publisher": { "@id": "https://www.fernandoduenas.com.bo/#agente" },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Cómo evaluar un inmueble como inversión antes de comprarlo",
+      "description": "Separar renta de plusvalía, calcular rentabilidad bruta y neta, incorporar costos de transacción y verificar la renta con comparables reales antes de decidir.",
+      "url": "https://www.fernandoduenas.com.bo/#blog",
+      "author": { "@id": "https://www.fernandoduenas.com.bo/#agente" },
+      "publisher": { "@id": "https://www.fernandoduenas.com.bo/#agente" },
+      "inLanguage": "es-BO",
+      "about": ["Inversión inmobiliaria", "Rentabilidad inmobiliaria", "Plusvalía"]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Anticrético, alquiler o compra: cómo elegir según su horizonte y su liquidez",
+      "description": "Comparación de los tres instrumentos según el horizonte de permanencia, el capital disponible y la necesidad de liquidez del interesado.",
+      "url": "https://www.fernandoduenas.com.bo/#blog",
+      "author": { "@id": "https://www.fernandoduenas.com.bo/#agente" },
+      "publisher": { "@id": "https://www.fernandoduenas.com.bo/#agente" },
+      "inLanguage": "es-BO",
+      "about": ["Anticrético", "Alquiler", "Compra de vivienda"]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Cinco situaciones registrales que detienen una compra en la etapa final",
+      "description": "Gravámenes en Columna B, discrepancias de superficie, deudas tributarias, sucesiones no perfeccionadas y poderes insuficientes.",
+      "url": "https://www.fernandoduenas.com.bo/#blog",
+      "author": { "@id": "https://www.fernandoduenas.com.bo/#agente" },
+      "publisher": { "@id": "https://www.fernandoduenas.com.bo/#agente" },
+      "inLanguage": "es-BO",
+      "about": ["Folio Real", "Derechos Reales", "Riesgo registral"]
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="bg-paper text-ink font-sans antialiased">
+
+<a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-rojo focus:text-paper focus:px-4 focus:py-2 focus:rounded">Saltar al contenido principal</a>
+
+<!-- ============================================================ -->
+<!-- ENCABEZADO / NAVEGACIÓN                                       -->
+<!-- ============================================================ -->
+<header class="sticky top-0 z-50 bg-ink/97 backdrop-blur border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+    <div class="flex items-center justify-between h-[72px]">
+      <a href="#inicio" class="flex items-baseline gap-2 group">
+        <span class="font-serif text-xl md:text-2xl font-semibold text-paper">Fernando Dueñas</span>
+        <span class="hidden sm:inline text-[13px] text-paper/45 font-mono">— La Paz, Bolivia</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8" aria-label="Navegación principal">
+        <a href="#inversion" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Inversión</a>
+        <a href="#propiedades" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Propiedades</a>
+        <a href="#protocolo" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Protocolo</a>
+        <a href="#zonas" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Zonas</a>
+        <a href="#orientador" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Orientador</a>
+        <a href="#blog" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Blog</a>
+        <a href="#preguntas" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Preguntas</a>
+        <a href="https://wa.me/59172056804" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-rojo text-paper text-[15px] font-medium px-4 py-2.5 rounded hover:bg-rojo-light transition-colors">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Escribir por WhatsApp
+        </a>
+      </nav>
+
+      <button id="btn-menu" aria-expanded="false" aria-controls="menu-movil" class="lg:hidden text-paper text-2xl p-2" aria-label="Abrir menú de navegación">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <nav id="menu-movil" class="menu-movil lg:hidden overflow-hidden max-h-0 opacity-0 border-t border-white/10" aria-label="Navegación móvil">
+    <div class="max-w-6xl mx-auto px-5 py-4 flex flex-col gap-4">
+      <a href="#inversion" class="text-paper/85 text-[16px]">Inversión inmobiliaria</a>
+      <a href="#propiedades" class="text-paper/85 text-[16px]">Propiedades en cartera</a>
+      <a href="#protocolo" class="text-paper/85 text-[16px]">Protocolo Trío Saneado</a>
+      <a href="#zonas" class="text-paper/85 text-[16px]">Zonas</a>
+      <a href="#servicios" class="text-paper/85 text-[16px]">A quién asesoro</a>
+      <a href="#orientador" class="text-paper/85 text-[16px]">Orientador de decisión</a>
+      <a href="#blog" class="text-paper/85 text-[16px]">Blog</a>
+      <a href="#proceso" class="text-paper/85 text-[16px]">Proceso</a>
+      <a href="#preguntas" class="text-paper/85 text-[16px]">Preguntas frecuentes</a>
+      <a href="https://wa.me/59172056804" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-rojo text-paper text-[15px] font-medium px-4 py-3 rounded">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Escribir por WhatsApp
+      </a>
+    </div>
+  </nav>
+</header>
+
+<main id="contenido">
+
+  <!-- ============================================================ -->
+  <!-- HERO                                                          -->
+  <!-- ============================================================ -->
+  <section id="inicio" class="bg-ink text-paper">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24 grid lg:grid-cols-[1.05fr_0.95fr] gap-14 items-center">
+      <div>
+        <p class="hero-anim text-[17px] sm:text-[19px] font-mono font-medium text-rojo-light mb-5">Asesor Inmobiliario Senior<br class="sm:hidden"><span class="hidden sm:inline"> · </span>Inversión Inmobiliaria y Seguridad Jurídica</p>
+        <h1 class="hero-anim-2 font-serif text-[2.35rem] leading-[1.12] sm:text-5xl sm:leading-[1.1] font-semibold max-w-xl">
+          Invertir en un inmueble empieza por leer su Folio Real, no sus fotos.
+        </h1>
+        <p class="hero-anim-3 mt-6 text-[17px] leading-relaxed text-paper/65 max-w-lg">
+          Asesoro a inversionistas y familias en La Paz. Antes de presentar una propiedad analizo su rentabilidad, su potencial de plusvalía por zona y su situación registral completa mediante el protocolo Trío Saneado. Si un inmueble no aprueba los tres controles documentales, no entra a la cartera.
+        </p>
+        <div class="hero-anim-3 mt-9 flex flex-wrap gap-4">
+          <a href="https://wa.me/59172056804" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-rojo text-paper font-medium px-6 py-3.5 rounded hover:bg-rojo-light transition-colors">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Consultar por WhatsApp
+          </a>
+          <a href="#protocolo" class="inline-flex items-center gap-2 border border-paper/30 text-paper font-medium px-6 py-3.5 rounded hover:border-paper transition-colors">
+            Ver el protocolo de verificación
+          </a>
+        </div>
+      </div>
+
+      <!-- Retrato -->
+      <div class="hero-anim-3">
+        <img
+          src="assets/fernando-duenas.jpg"
+          alt="Fernando Dueñas, Asesor Inmobiliario Senior en La Paz, Bolivia"
+          class="w-full max-h-[560px] object-cover rounded-sm border border-rojo/25"
+          width="843" height="1264">
+        <div class="mt-5 flex items-baseline gap-3">
+          <span class="w-8 h-[2px] bg-rojo shrink-0"></span>
+          <p class="font-serif text-[17px] text-paper">Fernando Dueñas <span class="font-sans text-[14px] text-paper/55">— Asesor Inmobiliario Senior · Especialista en Seguridad Jurídica Inmobiliaria</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PROPIEDADES EN CARTERA                                        -->
+  <!-- ============================================================ -->
+  <section id="propiedades" class="border-b border-linea">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+        <div>
+          <p class="folio-code text-[13px] text-rojo">CARTERA VERIFICADA</p>
+          <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold text-ink">Propiedades en cartera</h2>
+        </div>
+        <p id="props-contador" class="text-[14px] font-mono text-gris"></p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="flex flex-wrap gap-2 mb-8" id="filtros-props" role="group" aria-label="Filtrar propiedades">
+        <button class="filtro-btn activo" data-filtro="todos">Todas</button>
+        <button class="filtro-btn" data-filtro="Departamento">Departamentos</button>
+        <button class="filtro-btn" data-filtro="Casa">Casas</button>
+        <button class="filtro-btn" data-filtro="Terreno">Terrenos</button>
+        <button class="filtro-btn" data-filtro="Anticrético">Anticréticos</button>
+      </div>
+
+      <!-- Grid de propiedades -->
+      <div id="grid-propiedades" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Las propiedades se renderizan aquí vía JS -->
+        <div id="props-vacio" class="sm:col-span-2 lg:col-span-3 py-16 text-center border border-dashed border-linea rounded-sm">
+          <p class="text-gris text-[15px]">La cartera se actualiza regularmente.<br>Escriba por WhatsApp para consultar disponibilidad.</p>
+          <a href="https://wa.me/59172056804?text=Hola%20Fernando%2C%20quisiera%20saber%20qu%C3%A9%20propiedades%20tienes%20disponibles." target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 bg-rojo text-paper font-medium px-5 py-3 rounded hover:bg-rojo-light transition-colors text-[15px]">
+            <i class="fa-brands fa-whatsapp"></i> Consultar disponibilidad
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- INVERSIÓN INMOBILIARIA                                        -->
+  <!-- ============================================================ -->
+  <section id="inversion" class="border-b border-linea">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <p class="folio-code text-[13px] text-rojo">INVERSIÓN INMOBILIARIA</p>
+        <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold text-ink">Un inmueble de inversión se evalúa como activo, no como vivienda</h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-gris">
+          Comprar para habitar y comprar para invertir son decisiones distintas y se analizan con criterios distintos. Cuando el objetivo es rentabilidad, el análisis se concentra en cuatro variables medibles antes de mirar acabados o vista.
+        </p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-2 gap-10 md:gap-x-16 md:gap-y-12">
+        <article class="border-l-2 border-rojo pl-6">
+          <h3 class="font-serif text-xl font-semibold">Rentabilidad por renta</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Se calcula la rentabilidad bruta anual (renta anual dividida entre el precio total de adquisición) y, sobre ella, la rentabilidad neta, descontando expensas, impuesto anual a la propiedad, mantenimiento y una previsión de vacancia. La cifra neta es la única comparable contra otras alternativas de inversión.
+          </p>
+        </article>
+        <article class="border-l-2 border-rojo pl-6">
+          <h3 class="font-serif text-xl font-semibold">Potencial de plusvalía</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Se revisa el comportamiento histórico de precios de la zona, la normativa municipal de uso de suelo y altura edificable vigente, la obra pública proyectada y la densidad de oferta nueva en construcción. La plusvalía se estima sobre estos factores, no sobre proyecciones sin respaldo.
+          </p>
+        </article>
+        <article class="border-l-2 border-rojo pl-6">
+          <h3 class="font-serif text-xl font-semibold">Costos reales de transacción</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            El precio de lista no es el costo de adquisición. Se incorporan al cálculo el Impuesto Municipal a la Transferencia, los gastos notariales de protocolización, la inscripción del testimonio en Derechos Reales y los honorarios de intermediación, que en conjunto modifican la rentabilidad efectiva del primer año.
+          </p>
+        </article>
+        <article class="border-l-2 border-rojo pl-6">
+          <h3 class="font-serif text-xl font-semibold">Riesgo registral y de salida</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Un inmueble con documentación observada puede rentar sin problema, pero se vuelve difícil de vender o de hipotecar cuando usted decida salir. La verificación Trío Saneado se aplica precisamente para que el activo sea transferible el día que necesite liquidarlo.
+          </p>
+        </article>
+      </div>
+
+      <div class="mt-12 bg-ink text-paper border-l-2 border-rojo rounded-sm p-7 md:p-8">
+        <h3 class="font-serif text-xl font-semibold">Qué recibe un inversionista antes de decidir</h3>
+        <ul class="mt-5 grid sm:grid-cols-2 gap-x-10 gap-y-3 text-[15px] leading-relaxed text-paper/75">
+          <li class="flex gap-3"><span class="text-rojo-light" aria-hidden="true">—</span> Cálculo de rentabilidad bruta y neta del inmueble</li>
+          <li class="flex gap-3"><span class="text-rojo-light" aria-hidden="true">—</span> Comparables de renta y de venta en la misma zona</li>
+          <li class="flex gap-3"><span class="text-rojo-light" aria-hidden="true">—</span> Expediente de verificación registral completo</li>
+          <li class="flex gap-3"><span class="text-rojo-light" aria-hidden="true">—</span> Estimación de costos de transacción y de salida</li>
+        </ul>
+        <a href="https://wa.me/59172056804?text=Hola%20Fernando%2C%20me%20interesa%20asesor%C3%ADa%20en%20inversi%C3%B3n%20inmobiliaria." target="_blank" rel="noopener" class="mt-7 inline-flex items-center gap-2 bg-rojo text-paper font-medium px-6 py-3.5 rounded hover:bg-rojo-light transition-colors">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Consultar sobre inversión
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PROTOCOLO TRÍO SANEADO                                        -->
+  <!-- ============================================================ -->
+  <section id="protocolo" class="border-b border-linea">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink">El protocolo Trío Saneado</h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-gris">
+          Antes de aceptar un inmueble en cartera, se verifican de forma independiente tres fuentes documentales. Un inmueble que no aprueba alguno de los tres controles no se ofrece a los clientes, sin excepción.
+        </p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-3 gap-10 md:gap-12">
+        <article class="border-l-2 border-rojo pl-6">
+          <p class="folio-code text-[13px] text-rojo">CONTROL 01</p>
+          <h3 class="font-serif text-xl font-semibold mt-3">Folio Real</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Se solicita el Folio Real vigente en Derechos Reales, con una antigüedad de emisión menor a tres meses, y se revisa la Columna B para confirmar la ausencia de hipotecas, anotaciones preventivas o embargos registrados.
+          </p>
+        </article>
+        <article class="border-l-2 border-rojo pl-6">
+          <p class="folio-code text-[13px] text-rojo">CONTROL 02</p>
+          <h3 class="font-serif text-xl font-semibold mt-3">Ficha Catastral</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Se contrasta la Ficha Catastral emitida por el Gobierno Autónomo Municipal de La Paz contra los datos técnicos del Folio Real: superficie, ubicación y titular deben coincidir entre ambos registros.
+          </p>
+        </article>
+        <article class="border-l-2 border-rojo pl-6">
+          <p class="folio-code text-[13px] text-rojo">CONTROL 03</p>
+          <h3 class="font-serif text-xl font-semibold mt-3">Impuestos de Transferencia</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Se solicitan los comprobantes de pago del Impuesto Municipal a la Transferencia correspondientes a los últimos cinco años, para descartar deudas tributarias pendientes que puedan interrumpir el trámite notarial.
+          </p>
+        </article>
+      </div>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-5 sm:gap-8 items-start sm:items-center bg-ink text-paper border-l-2 border-rojo rounded-sm p-6">
+        <i class="fa-solid fa-shield-halved text-3xl text-rojo-light shrink-0" aria-hidden="true"></i>
+        <p class="text-[15px] leading-relaxed">
+          <strong class="font-semibold">Resultado para el cliente:</strong> recibe el expediente de verificación antes de la visita, no después de la reserva. La decisión de compra se toma con la documentación ya revisada.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ZONAS DE ENFOQUE                                              -->
+  <!-- ============================================================ -->
+  <section id="zonas" class="border-b border-linea bg-ink text-paper">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="font-serif text-3xl sm:text-4xl font-semibold">Zonas de enfoque</h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-paper/65">
+          El trabajo se concentra en cinco zonas de la ciudad de La Paz, donde el historial registral y municipal es conocido y la trazabilidad documental es más eficiente.
+        </p>
+      </div>
+
+      <div class="mt-12 divide-y divide-white/10 border-t border-b border-white/10">
+        <div class="grid sm:grid-cols-[160px_1fr] gap-2 sm:gap-8 py-6">
+          <p class="font-serif text-lg font-medium">Achumani</p>
+          <p class="text-[15px] leading-relaxed text-paper/65">Zona residencial de baja densidad, con predominio de casas y condominios familiares en la ladera sur de la ciudad.</p>
+        </div>
+        <div class="grid sm:grid-cols-[160px_1fr] gap-2 sm:gap-8 py-6">
+          <p class="font-serif text-lg font-medium">Irpavi</p>
+          <p class="text-[15px] leading-relaxed text-paper/65">Zona residencial y comercial mixta, con desarrollo vertical creciente y cercanía a centros educativos y comerciales.</p>
+        </div>
+        <div class="grid sm:grid-cols-[160px_1fr] gap-2 sm:gap-8 py-6">
+          <p class="font-serif text-lg font-medium">Obrajes</p>
+          <p class="text-[15px] leading-relaxed text-paper/65">Zona residencial consolidada, con oferta mixta entre vivienda unifamiliar y edificios de departamentos de rango medio y alto.</p>
+        </div>
+        <div class="grid sm:grid-cols-[160px_1fr] gap-2 sm:gap-8 py-6">
+          <p class="font-serif text-lg font-medium">Calacoto</p>
+          <p class="text-[15px] leading-relaxed text-paper/65">Zona residencial y comercial de mayor densidad de servicios, con la oferta inmobiliaria de rango más alto de la zona sur.</p>
+        </div>
+        <div class="grid sm:grid-cols-[160px_1fr] gap-2 sm:gap-8 py-6">
+          <p class="font-serif text-lg font-medium">Sopocachi</p>
+          <p class="text-[15px] leading-relaxed text-paper/65">Zona urbana central, de edificación más antigua, con alta demanda de departamentos por su cercanía al centro de la ciudad.</p>
+        </div>
+      </div>
+
+      <p class="mt-6 text-[13px] font-mono text-paper/35">Descripciones de carácter general. Datos de plusvalía y precio por m² específicos se entregan por zona y por inmueble bajo solicitud.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- A QUIÉN ASESORO                                               -->
+  <!-- ============================================================ -->
+  <section id="servicios" class="border-b border-linea">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink max-w-xl">A quién asesoro</h2>
+
+      <div class="mt-12 grid md:grid-cols-2 gap-12">
+        <article>
+          <i class="fa-solid fa-house-user text-2xl text-rojo" aria-hidden="true"></i>
+          <h3 class="font-serif text-xl font-semibold mt-5">Familias en proceso de compra de su primera o siguiente vivienda</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Acompañamiento desde la definición de presupuesto y zona hasta la firma notarial, con el expediente de verificación entregado antes de cada visita para evitar sorpresas legales en la etapa final del proceso.
+          </p>
+        </article>
+        <article>
+          <i class="fa-solid fa-chart-line text-2xl text-rojo" aria-hidden="true"></i>
+          <h3 class="font-serif text-xl font-semibold mt-5">Inversionistas locales y remotos</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Reportes de verificación documental para clientes que no pueden inspeccionar el expediente registral de forma presencial, con seguimiento del estado de trámites en Derechos Reales y en la Alcaldía.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PROCESO                                                       -->
+  <!-- ============================================================ -->
+  <section id="proceso" class="border-b border-linea">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink max-w-xl">Proceso de trabajo</h2>
+
+      <ol class="mt-12 grid md:grid-cols-4 gap-8">
+        <li>
+          <p class="folio-code text-[13px] text-rojo">PASO 1</p>
+          <h3 class="font-serif text-lg font-semibold mt-2">Diagnóstico</h3>
+          <p class="mt-2 text-[14px] leading-relaxed text-gris">Definición de presupuesto, zona y tipo de inmueble.</p>
+        </li>
+        <li>
+          <p class="folio-code text-[13px] text-rojo">PASO 2</p>
+          <h3 class="font-serif text-lg font-semibold mt-2">Verificación Trío Saneado</h3>
+          <p class="mt-2 text-[14px] leading-relaxed text-gris">Revisión de Folio Real, Ficha Catastral e impuestos.</p>
+        </li>
+        <li>
+          <p class="folio-code text-[13px] text-rojo">PASO 3</p>
+          <h3 class="font-serif text-lg font-semibold mt-2">Negociación</h3>
+          <p class="mt-2 text-[14px] leading-relaxed text-gris">Presentación de oferta y condiciones sobre datos verificados.</p>
+        </li>
+        <li>
+          <p class="folio-code text-[13px] text-rojo">PASO 4</p>
+          <h3 class="font-serif text-lg font-semibold mt-2">Cierre notarial</h3>
+          <p class="mt-2 text-[14px] leading-relaxed text-gris">Acompañamiento en minuta, testimonio e inscripción registral.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ORIENTADOR DE DECISIÓN (QUIZ INTERACTIVO)                     -->
+  <!-- ============================================================ -->
+  <section id="orientador" class="border-b border-linea bg-ink text-paper">
+    <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <p class="folio-code text-[13px] text-rojo-light">HERRAMIENTA DE ORIENTACIÓN</p>
+      <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold">¿Comprar, alquilar o tomar un anticrético?</h2>
+      <p class="mt-4 text-[17px] leading-relaxed text-paper/65 max-w-2xl">
+        Cinco preguntas sobre su objetivo, su capital disponible y su horizonte de permanencia. El resultado indica qué instrumento se ajusta mejor a su situación y por qué. No sustituye un análisis personalizado, pero ordena la decisión antes de la primera conversación.
+      </p>
+
+      <!-- Formulario: preguntas en HTML plano, legibles sin JavaScript -->
+      <div id="quiz" class="mt-12 border border-white/15 rounded-sm p-6 md:p-9">
+
+        <div class="flex items-center justify-between mb-7">
+          <span id="quiz-progreso" class="folio-code text-[13px] text-paper/50">PREGUNTA 1 DE 5</span>
+          <div class="h-[3px] w-32 bg-white/15 rounded-full overflow-hidden">
+            <div id="quiz-barra" class="h-full bg-rojo transition-all duration-300" style="width:20%"></div>
+          </div>
+        </div>
+
+        <fieldset class="quiz-paso" data-paso="1">
+          <legend class="font-serif text-xl sm:text-2xl font-medium mb-6">1. ¿Cuál es su objetivo principal con el inmueble?</legend>
+          <div class="grid gap-3">
+            <button type="button" class="quiz-opcion" data-inv="3" data-viv="0" data-anti="0" data-alq="0">Generar renta mensual o ganar plusvalía</button>
+            <button type="button" class="quiz-opcion" data-inv="0" data-viv="3" data-anti="1" data-alq="1">Vivir en él con mi familia</button>
+            <button type="button" class="quiz-opcion" data-inv="0" data-viv="1" data-anti="3" data-alq="2">Reducir o eliminar mi gasto mensual de vivienda</button>
+            <button type="button" class="quiz-opcion" data-inv="1" data-viv="0" data-anti="1" data-alq="3">Todavía no lo tengo definido</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz-paso hidden" data-paso="2">
+          <legend class="font-serif text-xl sm:text-2xl font-medium mb-6">2. ¿Con cuánto capital propio cuenta hoy, sin considerar financiamiento?</legend>
+          <div class="grid gap-3">
+            <button type="button" class="quiz-opcion" data-inv="0" data-viv="0" data-anti="0" data-alq="3">Menos del 20% del valor del inmueble que busco</button>
+            <button type="button" class="quiz-opcion" data-inv="1" data-viv="2" data-anti="2" data-alq="1">Entre el 20% y el 50%</button>
+            <button type="button" class="quiz-opcion" data-inv="2" data-viv="2" data-anti="3" data-alq="0">Más del 50%</button>
+            <button type="button" class="quiz-opcion" data-inv="3" data-viv="2" data-anti="2" data-alq="0">El valor total, sin necesidad de crédito</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz-paso hidden" data-paso="3">
+          <legend class="font-serif text-xl sm:text-2xl font-medium mb-6">3. ¿Por cuánto tiempo planea mantener el inmueble o permanecer en él?</legend>
+          <div class="grid gap-3">
+            <button type="button" class="quiz-opcion" data-inv="0" data-viv="0" data-anti="2" data-alq="3">Menos de 2 años</button>
+            <button type="button" class="quiz-opcion" data-inv="1" data-viv="1" data-anti="3" data-alq="1">Entre 2 y 5 años</button>
+            <button type="button" class="quiz-opcion" data-inv="3" data-viv="3" data-anti="0" data-alq="0">Más de 5 años</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz-paso hidden" data-paso="4">
+          <legend class="font-serif text-xl sm:text-2xl font-medium mb-6">4. ¿Podría necesitar disponer de ese capital en el corto plazo?</legend>
+          <div class="grid gap-3">
+            <button type="button" class="quiz-opcion" data-inv="0" data-viv="0" data-anti="1" data-alq="3">Sí, podría necesitarlo en menos de 2 años</button>
+            <button type="button" class="quiz-opcion" data-inv="1" data-viv="1" data-anti="3" data-alq="1">Tal vez, prefiero mantener flexibilidad</button>
+            <button type="button" class="quiz-opcion" data-inv="3" data-viv="3" data-anti="1" data-alq="0">No, puedo inmovilizarlo varios años</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz-paso hidden" data-paso="5">
+          <legend class="font-serif text-xl sm:text-2xl font-medium mb-6">5. ¿Cuenta con ingresos demostrables para acceder a un crédito hipotecario?</legend>
+          <div class="grid gap-3">
+            <button type="button" class="quiz-opcion" data-inv="2" data-viv="3" data-anti="0" data-alq="0">Sí, ingresos formales y estables</button>
+            <button type="button" class="quiz-opcion" data-inv="1" data-viv="1" data-anti="2" data-alq="1">Parcialmente, parte de mis ingresos es informal</button>
+            <button type="button" class="quiz-opcion" data-inv="1" data-viv="0" data-anti="3" data-alq="2">No, o prefiero no endeudarme</button>
+          </div>
+        </fieldset>
+
+        <!-- Resultado -->
+        <div id="quiz-resultado" class="hidden">
+          <p class="folio-code text-[13px] text-rojo-light">RESULTADO ORIENTATIVO</p>
+          <h3 id="res-titulo" class="mt-3 font-serif text-2xl sm:text-3xl font-semibold"></h3>
+          <p id="res-texto" class="mt-4 text-[16px] leading-relaxed text-paper/75"></p>
+          <div id="res-puntos" class="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-2 text-[15px] text-paper/70"></div>
+          <p class="mt-7 text-[13px] leading-relaxed text-paper/45 border-t border-white/15 pt-5">
+            Este resultado es orientativo y se basa únicamente en las cinco respuestas anteriores. No constituye asesoramiento financiero ni legal, y no considera su situación tributaria, crediticia ni patrimonial completa. Toda decisión requiere un análisis particular del inmueble y de sus condiciones.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-4">
+            <a id="res-whatsapp" href="https://wa.me/59172056804" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-rojo text-paper font-medium px-6 py-3.5 rounded hover:bg-rojo-light transition-colors">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Revisar mi caso con Fernando
+            </a>
+            <button type="button" id="quiz-reiniciar" class="inline-flex items-center gap-2 border border-white/30 text-paper font-medium px-6 py-3.5 rounded hover:border-paper transition-colors">
+              Responder de nuevo
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- BLOG                                                          -->
+  <!-- ============================================================ -->
+  <section id="blog" class="border-b border-linea">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <div class="max-w-2xl">
+        <p class="folio-code text-[13px] text-rojo">BLOG</p>
+        <h2 class="mt-3 font-serif text-3xl sm:text-4xl font-semibold text-ink">Dónde invertir, en qué invertir y qué revisar antes</h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-gris">
+          Criterios de análisis aplicados al mercado inmobiliario de La Paz, escritos para quien evalúa una compra con dinero propio.
+        </p>
+      </div>
+
+      <div class="mt-12 max-w-3xl divide-y divide-linea border-t border-b border-linea">
+
+        <!-- Artículo 1 -->
+        <article class="py-8">
+          <p class="folio-code text-[12px] text-rojo">ANÁLISIS DE INVERSIÓN</p>
+          <h3 class="mt-2 font-serif text-2xl font-semibold text-ink">Cómo evaluar un inmueble como inversión antes de comprarlo</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            La pregunta correcta no es cuánto cuesta el departamento, sino cuánto cuesta realmente adquirirlo y cuánto deja al año una vez descontados todos los gastos.
+          </p>
+          <details class="group mt-4">
+            <summary class="inline-flex items-center gap-2 text-[15px] font-medium text-rojo">
+              <i class="fa-solid fa-plus icono-mas text-[13px]" aria-hidden="true"></i> Leer el artículo completo
+            </summary>
+            <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-gris">
+              <p><strong class="text-ink font-semibold">Separe renta de plusvalía.</strong> Son dos retornos distintos y rara vez coinciden en el mismo inmueble. Un departamento pequeño cerca de zonas de oficinas o universidades tiende a rentar bien y revalorizarse poco. Un terreno o una casa en una zona en proceso de densificación puede revalorizarse de forma importante sin generar ningún ingreso mensual mientras tanto. Defina cuál de los dos retornos necesita antes de mirar propiedades.</p>
+              <p><strong class="text-ink font-semibold">Calcule la rentabilidad bruta y luego la neta.</strong> La bruta es la renta anual esperada dividida entre el precio total de adquisición, expresada en porcentaje. La neta descuenta de esa renta las expensas del edificio, el impuesto anual a la propiedad, el mantenimiento y reparaciones, y una previsión de vacancia por los meses en que el inmueble estará desocupado entre inquilinos. La diferencia entre ambas cifras suele ser considerable, y solo la neta sirve para comparar contra otras alternativas de inversión.</p>
+              <p><strong class="text-ink font-semibold">Incorpore los costos de transacción al precio de compra.</strong> El precio de lista no es lo que usted desembolsa. A ese monto se suman el Impuesto Municipal a la Transferencia, los gastos notariales de protocolización de la minuta, la inscripción del testimonio en Derechos Reales y los honorarios de intermediación. Si estos costos no entran en el denominador del cálculo, la rentabilidad que obtiene está sobrestimada.</p>
+              <p><strong class="text-ink font-semibold">Verifique la renta con comparables reales, no con la expectativa del vendedor.</strong> La renta que un propietario afirma que "se puede cobrar" no es un dato. Pida evidencia de alquileres efectivamente pactados en el mismo edificio o en la misma cuadra, con superficie y antigüedad similares. Una sobreestimación de la renta mensual distorsiona todo el análisis.</p>
+              <p><strong class="text-ink font-semibold">Piense en la salida desde el día de la compra.</strong> Un activo de inversión debe poder venderse. Los inmuebles con documentación observada, con superficie que no coincide entre Folio Real y catastro, o con derechos sucesorios sin perfeccionar, se rentan sin dificultad pero se venden con mucha. Verifique la situación registral antes de comprar, no cuando necesite liquidar.</p>
+            </div>
+          </details>
+        </article>
+
+        <!-- Artículo 2 -->
+        <article class="py-8">
+          <p class="folio-code text-[12px] text-rojo">INSTRUMENTOS</p>
+          <h3 class="mt-2 font-serif text-2xl font-semibold text-ink">Anticrético, alquiler o compra: cómo elegir según su horizonte y su liquidez</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Los tres instrumentos resuelven necesidades distintas. La variable que más pesa en la decisión no es el precio, sino cuánto tiempo permanecerá y cuándo necesitará su capital de vuelta.
+          </p>
+          <details class="group mt-4">
+            <summary class="inline-flex items-center gap-2 text-[15px] font-medium text-rojo">
+              <i class="fa-solid fa-plus icono-mas text-[13px]" aria-hidden="true"></i> Leer el artículo completo
+            </summary>
+            <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-gris">
+              <p><strong class="text-ink font-semibold">El alquiler.</strong> Inmoviliza el capital mínimo, normalmente una garantía equivalente a algunos meses de renta, y ofrece la mayor flexibilidad para mudarse. A cambio, el desembolso mensual es permanente y no genera ningún derecho sobre el inmueble. Es el instrumento razonable cuando el horizonte de permanencia es corto, cuando el capital disponible es reducido o cuando aún no se tiene certeza sobre la zona en la que se quiere vivir.</p>
+              <p><strong class="text-ink font-semibold">El anticrético.</strong> Es una figura ampliamente utilizada en Bolivia: el interesado entrega al propietario una suma de dinero y, a cambio, ocupa el inmueble durante el plazo pactado sin pagar renta mensual. Al vencimiento del contrato, el propietario restituye el capital. Elimina el gasto mensual de vivienda, pero exige inmovilizar un monto importante durante todo el plazo.</p>
+              <p>Dos consideraciones que conviene tener presentes antes de tomar un anticrético: el capital se devuelve en su monto nominal, de modo que su poder adquisitivo puede verse afectado durante el plazo del contrato; y la restitución depende de la capacidad de pago del propietario al vencimiento. Por eso es aconsejable verificar la situación registral del inmueble y la ausencia de gravámenes antes de entregar el dinero, e inscribir el contrato en Derechos Reales cuando corresponda, de modo que la operación quede oponible frente a terceros.</p>
+              <p><strong class="text-ink font-semibold">La compra.</strong> Compromete el capital de forma permanente y suma costos de transacción, pero es el único de los tres instrumentos que convierte el desembolso en patrimonio y captura la plusvalía de la zona. Se justifica cuando el horizonte supera varios años, porque es el plazo en el que la revalorización puede compensar los costos de entrada y de salida.</p>
+              <p><strong class="text-ink font-semibold">La regla práctica.</strong> A menor horizonte y mayor necesidad de liquidez, más conviene alquilar. A horizonte medio, con capital disponible y sin urgencia de disponer de él, el anticrético reduce el costo de vivienda. A horizonte largo, con capacidad de inmovilizar capital o de acceder a crédito, la compra es la que construye patrimonio. Las condiciones particulares de cada contrato pueden alterar esta regla, por lo que conviene revisarlas caso por caso.</p>
+            </div>
+          </details>
+        </article>
+
+        <!-- Artículo 3 -->
+        <article class="py-8">
+          <p class="folio-code text-[12px] text-rojo">RIESGO REGISTRAL</p>
+          <h3 class="mt-2 font-serif text-2xl font-semibold text-ink">Cinco situaciones registrales que detienen una compra en la etapa final</h3>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Casi ninguna operación se cae por el precio. Se cae por documentación que nadie revisó a tiempo, cuando el comprador ya entregó una reserva.
+          </p>
+          <details class="group mt-4">
+            <summary class="inline-flex items-center gap-2 text-[15px] font-medium text-rojo">
+              <i class="fa-solid fa-plus icono-mas text-[13px]" aria-hidden="true"></i> Leer el artículo completo
+            </summary>
+            <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-gris">
+              <p><strong class="text-ink font-semibold">1. Gravamen vigente en la Columna B del Folio Real.</strong> Una hipoteca no cancelada, un embargo o una anotación preventiva inscrita limitan la transferencia. Algunas se resuelven con el levantamiento correspondiente antes de la firma, pero el trámite toma tiempo y debe estar previsto en el cronograma de la operación, no descubrirse al final.</p>
+              <p><strong class="text-ink font-semibold">2. Discrepancia de superficie entre el Folio Real y la Ficha Catastral.</strong> Cuando los metros cuadrados inscritos en Derechos Reales no coinciden con los que registra la Alcaldía, la operación requiere una regularización previa. Es una de las observaciones más frecuentes y una de las que más demoran un cierre, especialmente si el inmueble tuvo ampliaciones no registradas.</p>
+              <p><strong class="text-ink font-semibold">3. Deuda pendiente del Impuesto Municipal a la Transferencia o del impuesto anual a la propiedad.</strong> Las deudas tributarias asociadas al inmueble impiden completar el trámite. Por eso se revisan los comprobantes de pago de los últimos cinco años antes de aceptar un inmueble en cartera.</p>
+              <p><strong class="text-ink font-semibold">4. Sucesión no perfeccionada.</strong> Cuando el titular registrado falleció y los herederos no completaron la declaratoria de herederos y la correspondiente inscripción, quienes ofrecen el inmueble no figuran aún como titulares. La venta no puede perfeccionarse hasta que el tracto registral esté completo.</p>
+              <p><strong class="text-ink font-semibold">5. Poder insuficiente, vencido o revocado.</strong> Si quien firma lo hace en representación del propietario, el poder debe facultar expresamente el acto de disposición, estar vigente y no haber sido revocado. Un poder general de administración no habilita a vender. Conviene verificar su vigencia en el momento de la firma, no en la fecha en que se lo exhibió por primera vez.</p>
+              <p>Estas cinco verificaciones son parte de la revisión previa que aplico antes de presentar un inmueble. El objetivo es que el comprador conozca el estado documental cuando todavía puede decidir libremente, y no después de haber comprometido dinero.</p>
+            </div>
+          </details>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PREGUNTAS FRECUENTES (AEO)                                    -->
+  <!-- ============================================================ -->
+  <section id="preguntas" class="border-b border-linea">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-ink max-w-xl">Preguntas frecuentes</h2>
+
+      <div class="mt-10 max-w-3xl divide-y divide-linea border-t border-b border-linea">
+
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-medium text-[16px] text-ink">¿Qué es el protocolo Trío Saneado?</span>
+            <i class="fa-solid fa-plus icono-mas text-rojo" aria-hidden="true"></i>
+          </summary>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Es el conjunto de tres verificaciones documentales que se aplican a todo inmueble antes de comercializarlo: Folio Real actualizado y libre de gravámenes en la Columna B, Ficha Catastral coincidente con la Alcaldía de La Paz, e Impuestos de Transferencia al día por los últimos cinco años.
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-medium text-[16px] text-ink">¿Qué es el Folio Real y por qué debe tener menos de tres meses de antigüedad?</span>
+            <i class="fa-solid fa-plus icono-mas text-rojo" aria-hidden="true"></i>
+          </summary>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            El Folio Real es el documento de Derechos Reales que acredita titularidad e historial de gravámenes de un inmueble. Un folio con más de tres meses puede no reflejar hipotecas o embargos inscritos recientemente, por lo que se exige una emisión reciente antes de cualquier oferta.
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-medium text-[16px] text-ink">¿Qué es la Columna B de un Folio Real?</span>
+            <i class="fa-solid fa-plus icono-mas text-rojo" aria-hidden="true"></i>
+          </summary>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Es la sección del Folio Real donde se registran hipotecas, anotaciones preventivas, embargos y otras limitaciones sobre el inmueble. Un inmueble con la Columna B libre no tiene cargas registradas que puedan afectar la transferencia.
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-medium text-[16px] text-ink">¿Qué zonas de La Paz cubre Fernando Dueñas?</span>
+            <i class="fa-solid fa-plus icono-mas text-rojo" aria-hidden="true"></i>
+          </summary>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Achumani, Irpavi, Obrajes, Calacoto y Sopocachi.
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-medium text-[16px] text-ink">¿Trabaja con inversionistas y compradores fuera de Bolivia?</span>
+            <i class="fa-solid fa-plus icono-mas text-rojo" aria-hidden="true"></i>
+          </summary>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Sí. Parte de la cartera de clientes opera de forma remota y requiere el expediente de verificación completo antes de decidir, dado que no puede inspeccionar la documentación registral de forma presencial.
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-medium text-[16px] text-ink">¿Cómo se calcula la rentabilidad de un inmueble de inversión?</span>
+            <i class="fa-solid fa-plus icono-mas text-rojo" aria-hidden="true"></i>
+          </summary>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            La rentabilidad bruta anual es la renta anual esperada dividida entre el precio total de adquisición. La rentabilidad neta descuenta de esa renta las expensas, el impuesto anual a la propiedad, el mantenimiento y una previsión de vacancia. Al precio de adquisición deben sumarse el Impuesto Municipal a la Transferencia, los gastos notariales, la inscripción en Derechos Reales y los honorarios de intermediación.
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-medium text-[16px] text-ink">¿Qué es un anticrético en Bolivia y en qué se diferencia del alquiler?</span>
+            <i class="fa-solid fa-plus icono-mas text-rojo" aria-hidden="true"></i>
+          </summary>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            En el anticrético, el interesado entrega al propietario una suma de dinero y ocupa el inmueble durante el plazo pactado sin pagar renta mensual; al vencimiento, el propietario restituye el capital. En el alquiler se paga una renta mensual y solo se inmoviliza una garantía menor. El anticrético elimina el gasto mensual pero exige inmovilizar un capital importante, y su restitución depende de la capacidad de pago del propietario al vencimiento.
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-medium text-[16px] text-ink">¿Conviene más comprar, alquilar o tomar un anticrético?</span>
+            <i class="fa-solid fa-plus icono-mas text-rojo" aria-hidden="true"></i>
+          </summary>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Depende del horizonte de permanencia y de la necesidad de liquidez. A horizonte corto o con necesidad de disponer del capital, el alquiler compromete menos. A horizonte medio, con capital disponible que puede inmovilizarse, el anticrético reduce el gasto mensual de vivienda. A horizonte largo, con capacidad de comprometer capital o de acceder a crédito, la compra construye patrimonio y captura plusvalía.
+          </p>
+        </details>
+
+        <details class="group py-5">
+          <summary class="flex items-center justify-between gap-4">
+            <span class="font-medium text-[16px] text-ink">¿Cuánto toma verificar una propiedad antes de ofrecerla?</span>
+            <i class="fa-solid fa-plus icono-mas text-rojo" aria-hidden="true"></i>
+          </summary>
+          <p class="mt-3 text-[15px] leading-relaxed text-gris">
+            Depende de los tiempos de respuesta de Derechos Reales y del Gobierno Autónomo Municipal de La Paz para emitir el Folio Real y la Ficha Catastral actualizados, además de la revisión de los comprobantes del Impuesto de Transferencia de los últimos cinco años.
+          </p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CONTACTO                                                      -->
+  <!-- ============================================================ -->
+  <section id="contacto" class="bg-ink text-paper">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-semibold">Antes de visitar un inmueble, revise su expediente.</h2>
+        <p class="mt-4 text-[17px] leading-relaxed text-paper/65 max-w-md">
+          Escriba con la zona de interés y el rango de presupuesto. La respuesta incluye el estado de verificación disponible del inmueble o inmuebles consultados.
+        </p>
+      </div>
+      <div class="bg-paper text-ink rounded-sm p-8 border-t-2 border-rojo">
+        <ul class="space-y-5">
+          <li class="flex items-center gap-4">
+            <i class="fa-brands fa-whatsapp text-2xl text-rojo w-7 text-center" aria-hidden="true"></i>
+            <a href="https://wa.me/59172056804" target="_blank" rel="noopener" class="text-[16px] font-medium hover:text-rojo">+591 7205 6804 (WhatsApp)</a>
+          </li>
+          <li class="flex items-center gap-4">
+            <i class="fa-solid fa-envelope text-2xl text-rojo w-7 text-center" aria-hidden="true"></i>
+            <a href="mailto:n9ndodni@gmail.com" class="text-[16px] font-medium hover:text-rojo">n9ndodni@gmail.com</a>
+          </li>
+          <li class="flex items-center gap-4">
+            <i class="fa-solid fa-location-dot text-2xl text-rojo w-7 text-center" aria-hidden="true"></i>
+            <a href="https://www.google.com/maps/place/C.+31+8,+La+Paz/@-16.5184717,-68.0618021,17z/data=!4m6!3m5!1s0x915f216f96717c6d:0x66e8f079f4bcdc41!8m2!3d-16.5185185!4d-68.0609987!16s%2Fg%2F11j37g2y0b" target="_blank" rel="noopener" class="text-[16px] font-medium hover:text-rojo">Calle 31, La Paz, Bolivia</a>
+          </li>
+        </ul>
+        <a href="https://wa.me/59172056804" target="_blank" rel="noopener" class="mt-7 w-full inline-flex items-center justify-center gap-2 bg-rojo text-paper font-medium px-6 py-3.5 rounded hover:bg-rojo-dark transition-colors">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Iniciar conversación
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================ -->
+<!-- PIE DE PÁGINA                                                 -->
+<!-- ============================================================ -->
+<footer class="bg-ink-dark text-paper/55">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+    <div>
+      <p class="font-serif text-paper text-lg font-medium">Fernando Dueñas</p>
+      <p class="text-[13px] mt-1">Asesor Inmobiliario Senior · La Paz, Bolivia</p>
+    </div>
+    <nav class="flex gap-5 text-[20px]" aria-label="Redes sociales">
+      <a href="https://www.linkedin.com/in/fernando-due%C3%B1as-487258150/" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-rojo-light"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+      <a href="https://www.instagram.com/fernandoduenas.inmobiliaria/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-rojo-light"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+      <a href="https://wa.me/59172056804" target="_blank" rel="noopener" aria-label="WhatsApp" class="hover:text-rojo-light"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+    </nav>
+    <p class="text-[12px] font-mono">© <span id="anio"></span> Fernando Dueñas. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('anio').textContent = new Date().getFullYear();
+
+  const btnMenu = document.getElementById('btn-menu');
+  const menuMovil = document.getElementById('menu-movil');
+
+  btnMenu.addEventListener('click', () => {
+    const abierto = btnMenu.getAttribute('aria-expanded') === 'true';
+    btnMenu.setAttribute('aria-expanded', String(!abierto));
+    if (abierto) {
+      menuMovil.style.maxHeight = '0px';
+      menuMovil.style.opacity = '0';
+      btnMenu.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    } else {
+      menuMovil.style.maxHeight = menuMovil.scrollHeight + 'px';
+      menuMovil.style.opacity = '1';
+      btnMenu.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+    }
+  });
+
+  menuMovil.querySelectorAll('a').forEach(enlace => {
+    enlace.addEventListener('click', () => {
+      menuMovil.style.maxHeight = '0px';
+      menuMovil.style.opacity = '0';
+      btnMenu.setAttribute('aria-expanded', 'false');
+      btnMenu.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    });
+  });
+
+  /* -------- Propiedades en cartera -------- */
+  (function () {
+    const SB_URL = 'https://olhjuvbquwbyhpbvzdol.supabase.co';
+    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9saGp1dmJxdXdieWhwYnZ6ZG9sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAxMzA0NjcsImV4cCI6MjEwNTcwNjQ2N30.C_cm7N69DKLZLTxng3epuMw5P3J1KgXyljJ6FHRUtIw';
+    let filtroActivo = 'todos';
+
+    async function getProps() {
+      try {
+        const r = await fetch(`${SB_URL}/rest/v1/propiedades?order=created_at.desc`, {
+          headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+        });
+        if (!r.ok) return [];
+        return await r.json();
+      } catch { return []; }
+    }
+
+    function formatNum(n) {
+      return n ? Number(n).toLocaleString('es-BO') : null;
+    }
+
+    function trioHTML(v) {
+      if (v === 'verificado')  return '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;padding:2px 8px;border-radius:9999px;border:1px solid #6ee7b7;color:#065f46;display:inline-flex;align-items:center;gap:4px"><i class="fa-solid fa-circle-check" style="font-size:10px"></i> Trío Saneado</span>';
+      if (v === 'en-proceso')  return '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;padding:2px 8px;border-radius:9999px;border:1px solid #fcd34d;color:#92400e;display:inline-block">En verificación</span>';
+      return '';
+    }
+
+    async function render() {
+      const todos     = await getProps();
+      const filtrados = filtroActivo === 'todos' ? todos : todos.filter(p => p.tipo === filtroActivo);
+      const grid      = document.getElementById('grid-propiedades');
+      const vacio     = document.getElementById('props-vacio');
+      const ctr       = document.getElementById('props-contador');
+
+      ctr.textContent = filtrados.length
+        ? filtrados.length + (filtrados.length === 1 ? ' propiedad disponible' : ' propiedades disponibles')
+        : '';
+
+      grid.querySelectorAll('.prop-card').forEach(c => c.remove());
+
+      if (!filtrados.length) {
+        if (vacio) vacio.style.display = '';
+        return;
+      }
+      if (vacio) vacio.style.display = 'none';
+
+      const ordenadas = [...filtrados.filter(p => p.destacada), ...filtrados.filter(p => !p.destacada)];
+
+      ordenadas.forEach(p => {
+        const foto      = (p.fotos && p.fotos[0]) ? p.fotos[0] : null;
+        const precioUSD = formatNum(p.precio_usd);
+        const precioBOB = formatNum(p.precio_bob);
+        const msg       = encodeURIComponent('Hola Fernando, me interesa la propiedad: ' + p.titulo + '. ¿Está disponible?');
+
+        const card = document.createElement('article');
+        card.className = 'prop-card border border-linea rounded-sm overflow-hidden bg-white flex flex-col';
+        card.innerHTML = `
+          ${foto
+            ? `<div style="height:200px;overflow:hidden"><img src="${foto}" alt="${p.titulo}" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.parentElement.style.display='none'"></div>`
+            : `<div style="height:140px;background:#E4E1DB;display:flex;align-items:center;justify-content:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5C5955">SIN FOTOGRAFÍA</span></div>`
+          }
+          <div style="padding:1.25rem;flex:1;display:flex;flex-direction:column;gap:0.75rem">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;flex-wrap:wrap">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7C1F2A;text-transform:uppercase">${p.tipo} · ${p.operacion}</span>
+              ${trioHTML(p.trio)}
+            </div>
+            <h3 style="font-family:'Source Serif 4',Georgia,serif;font-size:17px;font-weight:600;line-height:1.3;color:#141210">${p.titulo}</h3>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;font-size:13px;color:#5C5955;font-family:'IBM Plex Mono',monospace">
+              <span><i class="fa-solid fa-location-dot" style="color:#7C1F2A;margin-right:4px"></i>${p.zona}</span>
+              ${p.superficie ? '<span>' + p.superficie + ' m²</span>' : ''}
+              ${p.dormitorios ? '<span>' + p.dormitorios + ' dorm.</span>' : ''}
+            </div>
+            ${p.descripcion ? `<p style="font-size:14px;line-height:1.6;color:#5C5955;flex:1">${p.descripcion}</p>` : ''}
+            <div style="border-top:1px solid #E4E1DB;padding-top:0.85rem;display:flex;flex-direction:column;gap:0.35rem">
+              ${precioUSD ? `<p style="font-size:18px;font-weight:700;color:#141210">USD ${precioUSD}</p>` : ''}
+              ${precioBOB ? `<p style="font-size:${precioUSD ? '13px' : '18px'};font-weight:${precioUSD ? '400' : '700'};color:${precioUSD ? '#5C5955' : '#141210'}">BOB ${precioBOB}</p>` : ''}
+            </div>
+            <a href="https://wa.me/59172056804?text=${msg}" target="_blank" rel="noopener"
+               style="margin-top:auto;display:flex;align-items:center;justify-content:center;gap:8px;background:#7C1F2A;color:#F7F5F2;font-size:14px;font-weight:600;padding:0.7rem;border-radius:2px;text-decoration:none"
+               onmouseover="this.style.background='#A5333F'" onmouseout="this.style.background='#7C1F2A'">
+              <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
+            </a>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    document.getElementById('filtros-props').addEventListener('click', e => {
+      const btn = e.target.closest('.filtro-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+      btn.classList.add('activo');
+      filtroActivo = btn.dataset.filtro;
+      render();
+    });
+
+    render();
+  })();
+
+  /* ---------------- Orientador de decisión ---------------- */
+  (function () {
+    const pasos = Array.from(document.querySelectorAll('.quiz-paso'));
+    const total = pasos.length;
+    const progreso = document.getElementById('quiz-progreso');
+    const barra = document.getElementById('quiz-barra');
+    const resultado = document.getElementById('quiz-resultado');
+    const resTitulo = document.getElementById('res-titulo');
+    const resTexto = document.getElementById('res-texto');
+    const resPuntos = document.getElementById('res-puntos');
+    const resWhats = document.getElementById('res-whatsapp');
+    const reiniciar = document.getElementById('quiz-reiniciar');
+
+    if (!pasos.length) return;
+
+    let indice = 0;
+    let marcador = { inv: 0, viv: 0, anti: 0, alq: 0 };
+
+    const perfiles = {
+      inv: {
+        titulo: 'Compra como inversión',
+        texto: 'Su horizonte, su capital disponible y su objetivo apuntan a adquirir un inmueble para generar renta o capturar plusvalía. El siguiente paso es definir qué tipo de retorno prioriza, porque los inmuebles que rentan bien y los que se revalorizan más no suelen ser los mismos.',
+        puntos: [
+          'Definir prioridad entre renta mensual y plusvalía',
+          'Calcular rentabilidad neta, no solo bruta',
+          'Incorporar costos de transacción al análisis',
+          'Verificar situación registral antes de reservar'
+        ],
+        msg: 'Hola Fernando, hice el orientador de tu web y me salió COMPRA COMO INVERSIÓN. Me gustaría revisar opciones.'
+      },
+      viv: {
+        titulo: 'Compra de vivienda',
+        texto: 'Su permanencia proyectada y su capacidad de comprometer capital hacen que la compra para habitar sea el instrumento más coherente en su caso. El trabajo siguiente es ajustar zona y presupuesto, y verificar la documentación del inmueble antes de comprometer una reserva.',
+        puntos: [
+          'Definir zona y presupuesto realista',
+          'Evaluar crédito hipotecario si corresponde',
+          'Sumar costos de transacción al presupuesto',
+          'Exigir verificación registral previa a la reserva'
+        ],
+        msg: 'Hola Fernando, hice el orientador de tu web y me salió COMPRA DE VIVIENDA. Quisiera asesoría.'
+      },
+      anti: {
+        titulo: 'Anticrético',
+        texto: 'Cuenta con capital disponible, no lo necesita de inmediato y su horizonte es de mediano plazo. En esa combinación, el anticrético elimina el gasto mensual de vivienda sin comprometer el capital de forma definitiva. Conviene verificar la situación registral del inmueble y las condiciones del contrato antes de entregar el dinero.',
+        puntos: [
+          'Verificar Folio Real y ausencia de gravámenes',
+          'Revisar plazo y condiciones de restitución',
+          'Considerar inscripción del contrato en Derechos Reales',
+          'Evaluar el efecto del plazo sobre el capital'
+        ],
+        msg: 'Hola Fernando, hice el orientador de tu web y me salió ANTICRÉTICO. Quisiera ver opciones disponibles.'
+      },
+      alq: {
+        titulo: 'Alquiler',
+        texto: 'Su horizonte es corto o necesita mantener disponible su capital. En esas condiciones, el alquiler es el instrumento que menos compromete su liquidez y le permite decidir con más información más adelante, cuando tenga definida la zona o el objetivo.',
+        puntos: [
+          'Mantener el capital disponible mientras decide',
+          'Definir zona antes de comprometerse a largo plazo',
+          'Revisar condiciones y garantía del contrato',
+          'Reevaluar cuando cambie su horizonte'
+        ],
+        msg: 'Hola Fernando, hice el orientador de tu web y me salió ALQUILER. Quisiera consultarte igualmente.'
+      }
+    };
+
+    function mostrarPaso(i) {
+      pasos.forEach((p, n) => p.classList.toggle('hidden', n !== i));
+      progreso.textContent = 'PREGUNTA ' + (i + 1) + ' DE ' + total;
+      barra.style.width = ((i + 1) / total * 100) + '%';
+    }
+
+    function mostrarResultado() {
+      const clave = Object.keys(marcador).reduce((a, b) => marcador[b] > marcador[a] ? b : a);
+      const perfil = perfiles[clave];
+
+      pasos.forEach(p => p.classList.add('hidden'));
+      progreso.textContent = 'ORIENTACIÓN COMPLETADA';
+      barra.style.width = '100%';
+
+      resTitulo.textContent = perfil.titulo;
+      resTexto.textContent = perfil.texto;
+      resPuntos.innerHTML = perfil.puntos
+        .map(t => '<p class="flex gap-3"><span class="text-rojo-light" aria-hidden="true">&mdash;</span> ' + t + '</p>')
+        .join('');
+      resWhats.href = 'https://wa.me/59172056804?text=' + encodeURIComponent(perfil.msg);
+      resultado.classList.remove('hidden');
+    }
+
+    document.querySelectorAll('.quiz-opcion').forEach(boton => {
+      boton.addEventListener('click', () => {
+        marcador.inv  += parseInt(boton.dataset.inv, 10)  || 0;
+        marcador.viv  += parseInt(boton.dataset.viv, 10)  || 0;
+        marcador.anti += parseInt(boton.dataset.anti, 10) || 0;
+        marcador.alq  += parseInt(boton.dataset.alq, 10)  || 0;
+
+        indice++;
+        if (indice < total) {
+          mostrarPaso(indice);
+        } else {
+          mostrarResultado();
+        }
+      });
+    });
+
+    reiniciar.addEventListener('click', () => {
+      indice = 0;
+      marcador = { inv: 0, viv: 0, anti: 0, alq: 0 };
+      resultado.classList.add('hidden');
+      mostrarPaso(0);
+    });
+
+    mostrarPaso(0);
+  })();
+</script>
+
+</body>
+</html>

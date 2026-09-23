@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es-BO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Fernando Dueñas Inmobiliaria</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#F7F5F2', ink: '#141210',
+          rojo: { DEFAULT: '#7C1F2A', dark: '#5E1620', light: '#A5333F' },
+          gris: '#5C5955', linea: '#E4E1DB'
+        },
+        fontFamily: {
+          sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+          mono: ['"IBM Plex Mono"', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { background: #F7F5F2; }
+  input,select,textarea { background:white;border:1px solid #E4E1DB;border-radius:2px;padding:0.6rem 0.85rem;font-size:15px;width:100%;transition:border-color .15s;font-family:'IBM Plex Sans',sans-serif; }
+  input:focus,select:focus,textarea:focus { outline:none;border-color:#7C1F2A; }
+  label { font-size:13px;font-weight:600;color:#5C5955;display:block;margin-bottom:4px;font-family:'IBM Plex Mono',monospace;letter-spacing:.03em; }
+  .campo { margin-bottom:1rem; }
+  .btn-primary { background:#7C1F2A;color:white;border:none;padding:.75rem 1.5rem;font-size:15px;font-weight:600;border-radius:2px;cursor:pointer;transition:background .15s;font-family:'IBM Plex Sans',sans-serif; }
+  .btn-primary:hover { background:#A5333F; }
+  .btn-primary:disabled { opacity:.5;cursor:not-allowed; }
+  .btn-secondary { background:transparent;color:#7C1F2A;border:1px solid #7C1F2A;padding:.5rem 1rem;font-size:13px;font-weight:600;border-radius:2px;cursor:pointer;transition:all .15s;font-family:'IBM Plex Sans',sans-serif; }
+  .btn-secondary:hover { background:#7C1F2A;color:white; }
+  .btn-danger { background:transparent;color:#5E1620;border:1px solid #5E1620;padding:.4rem .85rem;font-size:13px;border-radius:2px;cursor:pointer;font-family:'IBM Plex Sans',sans-serif; }
+  .btn-danger:hover { background:#5E1620;color:white; }
+  .toast { position:fixed;bottom:1.5rem;right:1.5rem;background:#141210;color:white;padding:.85rem 1.25rem;border-radius:2px;font-size:14px;border-left:3px solid #7C1F2A;z-index:999;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none; }
+  .toast.show { opacity:1;transform:translateY(0); }
+  .ficha-admin { border:1px solid #E4E1DB;border-radius:2px;background:white;padding:1rem 1.15rem;display:flex;gap:1rem;align-items:flex-start; }
+  .foto-thumb { width:90px;height:70px;object-fit:cover;border-radius:2px;border:1px solid #E4E1DB;flex-shrink:0;background:#F7F5F2; }
+  .badge { font-family:'IBM Plex Mono',monospace;font-size:11px;padding:2px 8px;border-radius:9999px;border:1px solid currentColor;display:inline-block; }
+  .fotos-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px; }
+  .foto-slot { position:relative;aspect-ratio:4/3;border:2px dashed #E4E1DB;border-radius:2px;overflow:hidden;cursor:pointer;display:flex;align-items:center;justify-content:center;background:#fafaf9;transition:border-color .15s; }
+  .foto-slot:hover { border-color:#7C1F2A; }
+  .foto-slot img { width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0; }
+  .foto-slot .remove-foto { position:absolute;top:4px;right:4px;background:rgba(0,0,0,.6);color:white;border:none;border-radius:9999px;width:22px;height:22px;cursor:pointer;font-size:12px;display:none;align-items:center;justify-content:center; }
+  .foto-slot:hover .remove-foto { display:flex; }
+  .upload-progress { height:3px;background:#E4E1DB;border-radius:9999px;overflow:hidden;margin-top:6px;display:none; }
+  .upload-progress-bar { height:100%;background:#7C1F2A;border-radius:9999px;transition:width .3s; }
+</style>
+</head>
+<body class="min-h-screen font-sans text-ink antialiased">
+
+<!-- LOGIN -->
+<div id="pantalla-login" class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-sm">
+    <div class="text-center mb-8">
+      <p class="font-mono text-[13px] text-gris mb-2">PANEL DE ADMINISTRACIÓN</p>
+      <h1 class="text-2xl font-semibold">Fernando Dueñas</h1>
+    </div>
+    <div id="login-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-[14px] px-4 py-3 rounded mb-4"></div>
+    <div class="campo">
+      <label>CONTRASEÑA</label>
+      <input type="password" id="login-pass" placeholder="Ingrese la contraseña" autocomplete="current-password">
+    </div>
+    <button class="btn-primary w-full mt-2" onclick="iniciarSesion()">Ingresar</button>
+    <p class="text-center text-[12px] text-gris mt-5 font-mono">Contraseña por defecto: <strong>FD2024</strong><br>Cámbiela en Configuración.</p>
+  </div>
+</div>
+
+<!-- PANEL PRINCIPAL -->
+<div id="pantalla-panel" class="hidden">
+  <header class="sticky top-0 z-40 bg-ink border-b border-white/10">
+    <div class="max-w-5xl mx-auto px-5 h-[60px] flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-[13px] text-white/50">ADMIN</span>
+        <span class="text-white/20">|</span>
+        <span class="text-white text-[15px] font-medium">Fernando Dueñas · Propiedades</span>
+      </div>
+      <div class="flex items-center gap-5">
+        <div id="db-status" class="text-[13px] font-mono flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+          <span class="text-white/60">Conectando…</span>
+        </div>
+        <a href="index.html" target="_blank" class="text-white/60 hover:text-white text-[14px]">
+          <i class="fa-solid fa-arrow-up-right-from-square text-[12px] mr-1"></i>Ver sitio
+        </a>
+        <button onclick="cerrarSesion()" class="text-white/60 hover:text-white text-[14px]">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-5xl mx-auto px-5 py-10">
+    <div class="flex gap-1 border-b border-linea mb-10">
+      <button class="tab-btn px-5 py-2.5 text-[15px] font-medium border-b-2 border-rojo text-rojo" data-tab="lista">Propiedades</button>
+      <button class="tab-btn px-5 py-2.5 text-[15px] font-medium border-b-2 border-transparent text-gris" data-tab="nueva">+ Nueva</button>
+      <button class="tab-btn px-5 py-2.5 text-[15px] font-medium border-b-2 border-transparent text-gris" data-tab="config">Configuración</button>
+    </div>
+
+    <!-- TAB LISTA -->
+    <div id="tab-lista" class="tab-contenido">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-semibold">Propiedades publicadas</h2>
+        <span id="contador-props" class="font-mono text-[13px] text-gris"></span>
+      </div>
+      <div id="lista-propiedades" class="space-y-3">
+        <p class="text-gris text-[15px] py-8 text-center border border-dashed border-linea rounded">Cargando…</p>
+      </div>
+    </div>
+
+    <!-- TAB NUEVA / EDITAR -->
+    <div id="tab-nueva" class="tab-contenido hidden">
+      <h2 id="form-titulo" class="text-xl font-semibold mb-8">Nueva propiedad</h2>
+      <div class="grid md:grid-cols-2 gap-x-8 gap-y-1">
+        <div class="campo">
+          <label>TÍTULO *</label>
+          <input type="text" id="f-titulo" placeholder="Ej: Departamento 3 dorm. en Calacoto">
+        </div>
+        <div class="campo">
+          <label>TIPO *</label>
+          <select id="f-tipo">
+            <option value="">Seleccionar…</option>
+            <option value="Departamento">Departamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Terreno">Terreno</option>
+            <option value="Anticrético">Anticrético</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>ZONA *</label>
+          <select id="f-zona">
+            <option value="">Seleccionar…</option>
+            <option value="Achumani">Achumani</option>
+            <option value="Irpavi">Irpavi</option>
+            <option value="Obrajes">Obrajes</option>
+            <option value="Calacoto">Calacoto</option>
+            <option value="Sopocachi">Sopocachi</option>
+            <option value="Otra">Otra</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>OPERACIÓN</label>
+          <select id="f-operacion">
+            <option value="Venta">Venta</option>
+            <option value="Alquiler">Alquiler</option>
+            <option value="Anticrético">Anticrético</option>
+            <option value="Inversión">Inversión</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>PRECIO USD</label>
+          <input type="number" id="f-precio-usd" placeholder="Ej: 85000" min="0">
+        </div>
+        <div class="campo">
+          <label>PRECIO BOB</label>
+          <input type="number" id="f-precio-bob" placeholder="Ej: 587500" min="0">
+        </div>
+        <div class="campo">
+          <label>SUPERFICIE (m²)</label>
+          <input type="number" id="f-superficie" placeholder="Ej: 120" min="0">
+        </div>
+        <div class="campo">
+          <label>DORMITORIOS</label>
+          <select id="f-dormitorios">
+            <option value="">—</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5+">5 o más</option>
+          </select>
+        </div>
+        <div class="campo md:col-span-2">
+          <label>DESCRIPCIÓN</label>
+          <textarea id="f-descripcion" rows="3" placeholder="Características concretas del inmueble. Sin clichés."></textarea>
+        </div>
+        <div class="campo md:col-span-2">
+          <label>ESTADO DEL TRÍO SANEADO</label>
+          <select id="f-trio">
+            <option value="verificado">✓ Verificado — los tres controles aprobados</option>
+            <option value="en-proceso">En proceso de verificación</option>
+            <option value="pendiente">Pendiente</option>
+          </select>
+        </div>
+        <div class="campo md:col-span-2">
+          <div class="flex items-center gap-3 mt-1">
+            <input type="checkbox" id="f-destacada" class="w-4 h-4 accent-red-800" style="width:18px;height:18px;">
+            <span class="text-[15px]">Mostrar como propiedad destacada</span>
+          </div>
+        </div>
+
+        <!-- FOTOS (upload directo) -->
+        <div class="campo md:col-span-2">
+          <label>FOTOS (hasta 6 imágenes)</label>
+          <div class="fotos-grid" id="fotos-grid">
+            <!-- slots generados por JS -->
+          </div>
+          <div class="upload-progress mt-2" id="upload-progress">
+            <div class="upload-progress-bar" id="upload-progress-bar" style="width:0%"></div>
+          </div>
+          <p class="text-[12px] text-gris mt-2">Haga clic en cada slot para subir una foto desde su dispositivo. JPG o PNG, máx. 5 MB por imagen.</p>
+        </div>
+      </div>
+
+      <div id="form-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-[14px] px-4 py-3 rounded mt-2 mb-4"></div>
+      <div class="flex gap-3 mt-6 pt-6 border-t border-linea">
+        <button id="btn-guardar" class="btn-primary" onclick="guardarPropiedad()">
+          <i class="fa-solid fa-floppy-disk mr-2"></i>Guardar propiedad
+        </button>
+        <button class="btn-secondary" onclick="cancelarEdicion()">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- TAB CONFIG -->
+    <div id="tab-config" class="tab-contenido hidden">
+      <h2 class="text-xl font-semibold mb-8">Configuración</h2>
+      <div class="max-w-md space-y-6">
+        <div>
+          <h3 class="font-semibold mb-4">Cambiar contraseña del panel</h3>
+          <div class="campo"><label>CONTRASEÑA ACTUAL</label><input type="password" id="cfg-actual"></div>
+          <div class="campo"><label>NUEVA CONTRASEÑA</label><input type="password" id="cfg-nueva" placeholder="Mínimo 6 caracteres"></div>
+          <div class="campo"><label>CONFIRMAR</label><input type="password" id="cfg-confirma"></div>
+          <div id="cfg-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-[14px] px-4 py-3 rounded mb-3"></div>
+          <button class="btn-primary" onclick="cambiarPassword()">Cambiar contraseña</button>
+        </div>
+        <div class="border-t border-linea pt-6">
+          <h3 class="font-semibold text-red-800 mb-2">Zona de peligro</h3>
+          <p class="text-[14px] text-gris mb-4">Eliminar todas las propiedades. Acción irreversible.</p>
+          <button class="btn-danger" onclick="confirmarEliminarTodo()"><i class="fa-solid fa-trash mr-1.5"></i>Eliminar todas</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<!-- Input file oculto para subir fotos -->
+<input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="subirFoto(this)">
+
+<script>
+// ============================================================
+// CONFIGURACIÓN SUPABASE
+// ============================================================
+const SB_URL = 'https://olhjuvbquwbyhpbvzdol.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9saGp1dmJxdXdieWhwYnZ6ZG9sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAxMzA0NjcsImV4cCI6MjEwNTcwNjQ2N30.C_cm7N69DKLZLTxng3epuMw5P3J1KgXyljJ6FHRUtIw';
+const BUCKET = 'fotos-propiedades';
+
+const h = () => ({ 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json' });
+const hForm = () => ({ 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY });
+
+async function sbGet(tabla, filtros = '') {
+  const r = await fetch(`${SB_URL}/rest/v1/${tabla}?order=created_at.desc${filtros}`, { headers: h() });
+  return r.json();
+}
+async function sbInsert(tabla, data) {
+  const r = await fetch(`${SB_URL}/rest/v1/${tabla}`, { method: 'POST', headers: { ...h(), 'Prefer': 'return=representation' }, body: JSON.stringify(data) });
+  return r.json();
+}
+async function sbUpdate(tabla, id, data) {
+  const r = await fetch(`${SB_URL}/rest/v1/${tabla}?id=eq.${id}`, { method: 'PATCH', headers: { ...h(), 'Prefer': 'return=representation' }, body: JSON.stringify(data) });
+  return r.json();
+}
+async function sbDelete(tabla, id) {
+  await fetch(`${SB_URL}/rest/v1/${tabla}?id=eq.${id}`, { method: 'DELETE', headers: h() });
+}
+async function sbUpload(path, file) {
+  const r = await fetch(`${SB_URL}/storage/v1/object/${BUCKET}/${path}`, {
+    method: 'POST', headers: { ...hForm(), 'x-upsert': 'true' }, body: file
+  });
+  return r.json();
+}
+async function sbDeleteFile(path) {
+  await fetch(`${SB_URL}/storage/v1/object/${BUCKET}/${path}`, { method: 'DELETE', headers: hForm() });
+}
+function sbPublicUrl(path) {
+  return `${SB_URL}/storage/v1/object/public/${BUCKET}/${path}`;
+}
+
+// ============================================================
+// AUTH
+// ============================================================
+const CLAVE_PASS = 'fd_admin_pass';
+const PASS_DEFAULT = 'FD2024';
+function getPass() { return localStorage.getItem(CLAVE_PASS) || PASS_DEFAULT; }
+
+function iniciarSesion() {
+  const pass = document.getElementById('login-pass').value;
+  const err = document.getElementById('login-error');
+  if (pass === getPass()) {
+    document.getElementById('pantalla-login').classList.add('hidden');
+    document.getElementById('pantalla-panel').classList.remove('hidden');
+    iniciarPanel();
+    err.classList.add('hidden');
+  } else {
+    err.textContent = 'Contraseña incorrecta.';
+    err.classList.remove('hidden');
+    document.getElementById('login-pass').value = '';
+  }
+}
+document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') iniciarSesion(); });
+
+function cerrarSesion() {
+  document.getElementById('pantalla-panel').classList.add('hidden');
+  document.getElementById('pantalla-login').classList.remove('hidden');
+  document.getElementById('login-pass').value = '';
+}
+
+// ============================================================
+// INICIO DEL PANEL — verificar conexión y crear tabla si no existe
+// ============================================================
+async function iniciarPanel() {
+  const st = document.getElementById('db-status');
+  try {
+    // Intentar leer la tabla
+    const r = await fetch(`${SB_URL}/rest/v1/propiedades?limit=1`, { headers: h() });
+    if (r.status === 200 || r.status === 206) {
+      st.innerHTML = '<span class="w-2 h-2 rounded-full bg-green-400"></span><span class="text-white/60">Conectado</span>';
+      iniciarFotosGrid();
+      renderLista();
+    } else {
+      // La tabla no existe — mostrar instrucciones SQL
+      st.innerHTML = '<span class="w-2 h-2 rounded-full bg-red-400"></span><span class="text-white/60">Tabla no creada</span>';
+      mostrarToast('Ejecute el SQL de configuración primero.', false);
+      document.getElementById('lista-propiedades').innerHTML = sqlInstrucciones();
+    }
+  } catch (e) {
+    st.innerHTML = '<span class="w-2 h-2 rounded-full bg-red-400"></span><span class="text-white/60">Sin conexión</span>';
+  }
+}
+
+function sqlInstrucciones() {
+  return `<div class="bg-ink text-paper p-6 rounded-sm">
+    <p class="font-mono text-[13px] text-rojo mb-3">PASO REQUERIDO — Ejecute este SQL en Supabase</p>
+    <p class="text-[14px] text-paper/70 mb-4">Vaya a su proyecto en supabase.com → SQL Editor → New query, pegue este código y haga clic en Run:</p>
+    <pre class="font-mono text-[12px] text-green-300 bg-black/40 p-4 rounded overflow-x-auto">create table if not exists propiedades (
+  id          uuid default gen_random_uuid() primary key,
+  titulo      text not null,
+  tipo        text,
+  zona        text,
+  operacion   text,
+  precio_usd  numeric,
+  precio_bob  numeric,
+  superficie  numeric,
+  dormitorios text,
+  descripcion text,
+  trio        text default 'pendiente',
+  destacada   boolean default false,
+  fotos       text[],
+  created_at  timestamptz default now()
+);
+
+-- Política de acceso público (lectura) y admin (escritura)
+alter table propiedades enable row level security;
+create policy "Lectura pública" on propiedades for select using (true);
+create policy "Escritura anon" on propiedades for all using (true);
+
+-- Bucket de fotos (si no existe)
+insert into storage.buckets (id, name, public)
+values ('fotos-propiedades', 'fotos-propiedades', true)
+on conflict (id) do nothing;
+
+create policy "Fotos públicas" on storage.objects
+  for select using (bucket_id = 'fotos-propiedades');
+create policy "Subir fotos" on storage.objects
+  for insert with check (bucket_id = 'fotos-propiedades');
+create policy "Eliminar fotos" on storage.objects
+  for delete using (bucket_id = 'fotos-propiedades');</pre>
+    <button class="btn-primary mt-4" onclick="iniciarPanel()">Reintentar conexión</button>
+  </div>`;
+}
+
+// ============================================================
+// TABS
+// ============================================================
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.toggle('border-rojo', b === btn);
+      b.classList.toggle('text-rojo', b === btn);
+      b.classList.toggle('border-transparent', b !== btn);
+      b.classList.toggle('text-gris', b !== btn);
+    });
+    document.querySelectorAll('.tab-contenido').forEach(t => t.classList.add('hidden'));
+    document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+    if (btn.dataset.tab === 'lista') renderLista();
+    if (btn.dataset.tab === 'nueva') iniciarFotosGrid();
+  });
+});
+
+function irATab(nombre) {
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    const activo = b.dataset.tab === nombre;
+    b.classList.toggle('border-rojo', activo);
+    b.classList.toggle('text-rojo', activo);
+    b.classList.toggle('border-transparent', !activo);
+    b.classList.toggle('text-gris', !activo);
+  });
+  document.querySelectorAll('.tab-contenido').forEach(t => t.classList.add('hidden'));
+  document.getElementById('tab-' + nombre).classList.remove('hidden');
+  if (nombre === 'lista') renderLista();
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+let toastTimer;
+function mostrarToast(msg, ok = true) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderLeftColor = ok ? '#7C1F2A' : '#b91c1c';
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ============================================================
+// FOTOS — GRID DE SLOTS
+// ============================================================
+let fotosActuales = []; // array de URLs públicas
+let slotActivoIndex = -1;
+
+function iniciarFotosGrid(fotos = []) {
+  fotosActuales = fotos.slice(0, 6);
+  renderFotosGrid();
+}
+
+function renderFotosGrid() {
+  const grid = document.getElementById('fotos-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  for (let i = 0; i < 6; i++) {
+    const url = fotosActuales[i] || null;
+    const slot = document.createElement('div');
+    slot.className = 'foto-slot';
+    slot.innerHTML = url
+      ? `<img src="${url}" alt="Foto ${i+1}">
+         <button class="remove-foto" onclick="eliminarFotoSlot(${i}, event)">×</button>`
+      : `<span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:#5C5955;text-align:center;padding:8px">
+           <i class="fa-solid fa-plus" style="font-size:18px;display:block;margin-bottom:4px;color:#E4E1DB"></i>
+           Foto ${i+1}
+         </span>`;
+    if (!url) slot.addEventListener('click', () => abrirSelector(i));
+    grid.appendChild(slot);
+  }
+}
+
+function abrirSelector(index) {
+  slotActivoIndex = index;
+  document.getElementById('file-input').click();
+}
+
+async function subirFoto(input) {
+  const file = input.files[0];
+  if (!file || slotActivoIndex < 0) return;
+  if (file.size > 5 * 1024 * 1024) { mostrarToast('La imagen supera 5 MB.', false); return; }
+
+  const prog = document.getElementById('upload-progress');
+  const bar  = document.getElementById('upload-progress-bar');
+  prog.style.display = 'block';
+  bar.style.width = '30%';
+
+  const ext  = file.name.split('.').pop().toLowerCase();
+  const path = `prop_${Date.now()}_${slotActivoIndex}.${ext}`;
+
+  try {
+    bar.style.width = '60%';
+    const res = await sbUpload(path, file);
+    bar.style.width = '100%';
+    if (res.error) { mostrarToast('Error al subir: ' + res.error.message, false); }
+    else {
+      fotosActuales[slotActivoIndex] = sbPublicUrl(path);
+      renderFotosGrid();
+      mostrarToast('Foto subida correctamente.');
+    }
+  } catch (e) {
+    mostrarToast('Error de conexión al subir la foto.', false);
+  } finally {
+    setTimeout(() => { prog.style.display = 'none'; bar.style.width = '0%'; }, 600);
+    input.value = '';
+    slotActivoIndex = -1;
+  }
+}
+
+async function eliminarFotoSlot(i, e) {
+  e.stopPropagation();
+  const url = fotosActuales[i];
+  if (!url) return;
+  // Extraer path del bucket de la URL pública
+  const path = url.split(`/public/${BUCKET}/`)[1];
+  if (path) await sbDeleteFile(path);
+  fotosActuales.splice(i, 1);
+  renderFotosGrid();
+}
+
+// ============================================================
+// LISTA DE PROPIEDADES
+// ============================================================
+let editandoId = null;
+
+async function renderLista() {
+  const cont = document.getElementById('lista-propiedades');
+  const ctr  = document.getElementById('contador-props');
+  cont.innerHTML = '<p class="text-gris text-[15px] py-6 text-center">Cargando…</p>';
+  try {
+    const props = await sbGet('propiedades');
+    if (!Array.isArray(props)) { cont.innerHTML = sqlInstrucciones(); return; }
+    ctr.textContent = props.length + (props.length === 1 ? ' propiedad' : ' propiedades');
+    if (!props.length) {
+      cont.innerHTML = '<p class="text-gris text-[15px] py-8 text-center border border-dashed border-linea rounded">Aún no hay propiedades. Use la pestaña "+ Nueva".</p>';
+      return;
+    }
+    cont.innerHTML = props.map(p => {
+      const foto = p.fotos && p.fotos[0] ? p.fotos[0] : null;
+      const trio = p.trio === 'verificado'
+        ? '<span class="badge text-emerald-700 border-emerald-300">✓ Verificado</span>'
+        : p.trio === 'en-proceso' ? '<span class="badge text-amber-700 border-amber-300">En proceso</span>'
+        : '<span class="badge text-gris border-linea">Pendiente</span>';
+      const dest = p.destacada ? '<span class="badge text-rojo border-rojo/40">Destacada</span>' : '';
+      return `<div class="ficha-admin">
+        ${foto
+          ? `<img src="${foto}" class="foto-thumb" alt="" onerror="this.style.display='none'">`
+          : `<div class="foto-thumb flex items-center justify-center text-gris text-[11px] font-mono text-center leading-tight">SIN FOTO</div>`}
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-3 flex-wrap">
+            <p class="font-semibold text-[15px] leading-tight">${p.titulo}</p>
+            <div class="flex gap-2 flex-wrap">${trio} ${dest}</div>
+          </div>
+          <p class="text-[13px] text-gris mt-1 font-mono">${p.tipo || '—'} · ${p.zona || '—'} · ${p.operacion || '—'}</p>
+          <div class="flex gap-4 mt-1 text-[13px] text-gris">
+            ${p.precio_usd ? '<span>USD ' + Number(p.precio_usd).toLocaleString() + '</span>' : ''}
+            ${p.precio_bob ? '<span>BOB ' + Number(p.precio_bob).toLocaleString() + '</span>' : ''}
+            ${p.superficie ? '<span>' + p.superficie + ' m²</span>' : ''}
+            ${p.dormitorios ? '<span>' + p.dormitorios + ' dorm.</span>' : ''}
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 shrink-0">
+          <button class="btn-secondary text-[12px]" onclick="editarPropiedad('${p.id}')"><i class="fa-solid fa-pen"></i> Editar</button>
+          <button class="btn-danger text-[12px]" onclick="eliminarPropiedad('${p.id}', '${(p.fotos||[]).join(',')}')"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`;
+    }).join('');
+  } catch (e) {
+    cont.innerHTML = '<p class="text-red-700 text-[14px] py-4">Error al cargar. Verifique la conexión.</p>';
+  }
+}
+
+// ============================================================
+// GUARDAR PROPIEDAD
+// ============================================================
+function validarForm() {
+  const err = document.getElementById('form-error');
+  if (!document.getElementById('f-titulo').value.trim()) {
+    err.textContent = 'El título es obligatorio.'; err.classList.remove('hidden'); return false;
+  }
+  if (!document.getElementById('f-tipo').value) {
+    err.textContent = 'Seleccione un tipo.'; err.classList.remove('hidden'); return false;
+  }
+  if (!document.getElementById('f-zona').value) {
+    err.textContent = 'Seleccione una zona.'; err.classList.remove('hidden'); return false;
+  }
+  err.classList.add('hidden');
+  return true;
+}
+
+async function guardarPropiedad() {
+  if (!validarForm()) return;
+  const btn = document.getElementById('btn-guardar');
+  btn.disabled = true;
+  btn.textContent = 'Guardando…';
+
+  const data = {
+    titulo:      document.getElementById('f-titulo').value.trim(),
+    tipo:        document.getElementById('f-tipo').value,
+    zona:        document.getElementById('f-zona').value,
+    operacion:   document.getElementById('f-operacion').value,
+    precio_usd:  document.getElementById('f-precio-usd').value || null,
+    precio_bob:  document.getElementById('f-precio-bob').value || null,
+    superficie:  document.getElementById('f-superficie').value || null,
+    dormitorios: document.getElementById('f-dormitorios').value || null,
+    descripcion: document.getElementById('f-descripcion').value.trim(),
+    trio:        document.getElementById('f-trio').value,
+    destacada:   document.getElementById('f-destacada').checked,
+    fotos:       fotosActuales.filter(Boolean)
+  };
+
+  try {
+    let res;
+    if (editandoId) res = await sbUpdate('propiedades', editandoId, data);
+    else            res = await sbInsert('propiedades', data);
+
+    if (res && res[0] && res[0].id) {
+      limpiarForm();
+      mostrarToast(editandoId ? 'Propiedad actualizada.' : 'Propiedad publicada.');
+      irATab('lista');
+    } else {
+      mostrarToast('Error al guardar. Intente de nuevo.', false);
+    }
+  } catch (e) {
+    mostrarToast('Error de conexión.', false);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fa-solid fa-floppy-disk mr-2"></i>Guardar propiedad';
+  }
+}
+
+function limpiarForm() {
+  ['f-titulo','f-precio-usd','f-precio-bob','f-superficie','f-descripcion']
+    .forEach(id => document.getElementById(id).value = '');
+  ['f-tipo','f-zona','f-dormitorios'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-operacion').value = 'Venta';
+  document.getElementById('f-trio').value = 'verificado';
+  document.getElementById('f-destacada').checked = false;
+  document.getElementById('form-error').classList.add('hidden');
+  document.getElementById('form-titulo').textContent = 'Nueva propiedad';
+  editandoId = null;
+  iniciarFotosGrid([]);
+}
+
+function cancelarEdicion() { limpiarForm(); irATab('lista'); }
+
+async function editarPropiedad(id) {
+  const props = await sbGet('propiedades', `&id=eq.${id}`);
+  if (!props || !props[0]) return;
+  const p = props[0];
+  editandoId = id;
+  document.getElementById('f-titulo').value      = p.titulo || '';
+  document.getElementById('f-tipo').value         = p.tipo || '';
+  document.getElementById('f-zona').value         = p.zona || '';
+  document.getElementById('f-operacion').value    = p.operacion || 'Venta';
+  document.getElementById('f-precio-usd').value   = p.precio_usd || '';
+  document.getElementById('f-precio-bob').value   = p.precio_bob || '';
+  document.getElementById('f-superficie').value   = p.superficie || '';
+  document.getElementById('f-dormitorios').value  = p.dormitorios || '';
+  document.getElementById('f-descripcion').value  = p.descripcion || '';
+  document.getElementById('f-trio').value         = p.trio || 'pendiente';
+  document.getElementById('f-destacada').checked  = p.destacada || false;
+  document.getElementById('form-titulo').textContent = 'Editar propiedad';
+  iniciarFotosGrid(p.fotos || []);
+  irATab('nueva');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function eliminarPropiedad(id, fotosStr) {
+  if (!confirm('¿Eliminar esta propiedad? La acción no se puede deshacer.')) return;
+  // Eliminar fotos del bucket
+  if (fotosStr) {
+    const paths = fotosStr.split(',').filter(Boolean).map(u => u.split(`/public/${BUCKET}/`)[1]).filter(Boolean);
+    for (const path of paths) await sbDeleteFile(path);
+  }
+  await sbDelete('propiedades', id);
+  renderLista();
+  mostrarToast('Propiedad eliminada.');
+}
+
+async function confirmarEliminarTodo() {
+  if (!confirm('¿Eliminar TODAS las propiedades? Acción irreversible.')) return;
+  const props = await sbGet('propiedades');
+  for (const p of props) {
+    if (p.fotos) for (const u of p.fotos) {
+      const path = u.split(`/public/${BUCKET}/`)[1];
+      if (path) await sbDeleteFile(path);
+    }
+    await sbDelete('propiedades', p.id);
+  }
+  renderLista();
+  mostrarToast('Todas las propiedades eliminadas.', false);
+}
+
+// ============================================================
+// CONFIGURACIÓN — CONTRASEÑA
+// ============================================================
+function cambiarPassword() {
+  const actual   = document.getElementById('cfg-actual').value;
+  const nueva    = document.getElementById('cfg-nueva').value;
+  const confirma = document.getElementById('cfg-confirma').value;
+  const err      = document.getElementById('cfg-error');
+  if (actual !== getPass())   { err.textContent = 'Contraseña actual incorrecta.'; err.classList.remove('hidden'); return; }
+  if (nueva.length < 6)       { err.textContent = 'Mínimo 6 caracteres.'; err.classList.remove('hidden'); return; }
+  if (nueva !== confirma)     { err.textContent = 'Las contraseñas no coinciden.'; err.classList.remove('hidden'); return; }
+  localStorage.setItem(CLAVE_PASS, nueva);
+  ['cfg-actual','cfg-nueva','cfg-confirma'].forEach(id => document.getElementById(id).value = '');
+  err.classList.add('hidden');
+  mostrarToast('Contraseña actualizada.');
+}
+</script>
+</body>
+</html>
