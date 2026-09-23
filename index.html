@@ -349,6 +349,7 @@
       <nav class="hidden lg:flex items-center gap-8" aria-label="Navegación principal">
         <a href="#inversion" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Inversión</a>
         <a href="#propiedades" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Propiedades</a>
+        <a href="#proyectos" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Proyectos</a>
         <a href="#protocolo" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Protocolo</a>
         <a href="#zonas" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Zonas</a>
         <a href="#orientador" class="text-[15px] text-paper/80 hover:text-rojo-light transition-colors">Orientador</a>
@@ -369,6 +370,7 @@
     <div class="max-w-6xl mx-auto px-5 py-4 flex flex-col gap-4">
       <a href="#inversion" class="text-paper/85 text-[16px]">Inversión inmobiliaria</a>
       <a href="#propiedades" class="text-paper/85 text-[16px]">Propiedades en cartera</a>
+      <a href="#proyectos" class="text-paper/85 text-[16px]">Proyectos</a>
       <a href="#protocolo" class="text-paper/85 text-[16px]">Protocolo Trío Saneado</a>
       <a href="#zonas" class="text-paper/85 text-[16px]">Zonas</a>
       <a href="#servicios" class="text-paper/85 text-[16px]">A quién asesoro</a>
@@ -453,6 +455,59 @@
           <a href="https://wa.me/59172056804?text=Hola%20Fernando%2C%20quisiera%20saber%20qu%C3%A9%20propiedades%20tienes%20disponibles." target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 bg-rojo text-paper font-medium px-5 py-3 rounded hover:bg-rojo-light transition-colors text-[15px]">
             <i class="fa-brands fa-whatsapp"></i> Consultar disponibilidad
           </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PROYECTOS                                                     -->
+  <!-- ============================================================ -->
+  <section id="proyectos" class="border-b border-linea bg-ink text-paper">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+        <div>
+          <p class="folio-code text-[13px] text-rojo-light">DESARROLLOS Y PROYECTOS</p>
+          <h2 class="mt-2 font-serif text-3xl sm:text-4xl font-semibold">Proyectos en comercialización</h2>
+        </div>
+        <p id="proyectos-contador" class="text-[14px] font-mono text-paper/50"></p>
+      </div>
+
+      <!-- Grid de proyectos -->
+      <div id="grid-proyectos" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="proyectos-vacio" class="sm:col-span-2 lg:col-span-3 py-16 text-center border border-dashed border-white/15 rounded-sm">
+          <p class="text-paper/50 text-[15px]">Los proyectos se actualizan regularmente.<br>Escriba por WhatsApp para consultar disponibilidad.</p>
+          <a href="https://wa.me/59172056804?text=Hola%20Fernando%2C%20quisiera%20saber%20qu%C3%A9%20proyectos%20tienes%20disponibles." target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 bg-rojo text-paper font-medium px-5 py-3 rounded hover:bg-rojo-light transition-colors text-[15px]">
+            <i class="fa-brands fa-whatsapp"></i> Consultar proyectos
+          </a>
+        </div>
+      </div>
+
+      <!-- Modal de unidades -->
+      <div id="modal-proyecto" class="hidden fixed inset-0 z-50 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+        <div class="min-h-screen px-4 py-8 flex items-start justify-center">
+          <div class="fixed inset-0 bg-black/75" onclick="cerrarModal()"></div>
+          <div class="relative bg-paper text-ink w-full max-w-4xl rounded-sm z-10">
+            <!-- Header modal -->
+            <div class="bg-ink text-paper px-6 py-5 flex items-start justify-between gap-4 rounded-t-sm">
+              <div>
+                <p id="modal-tipo" class="folio-code text-[12px] text-rojo-light mb-1"></p>
+                <h3 id="modal-titulo" class="font-serif text-2xl font-semibold"></h3>
+                <p id="modal-zona" class="text-[14px] text-paper/60 mt-1"></p>
+              </div>
+              <button onclick="cerrarModal()" class="text-paper/60 hover:text-paper text-2xl shrink-0 mt-1" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <!-- Descripción proyecto -->
+            <div id="modal-desc" class="px-6 py-4 border-b border-linea text-[15px] text-gris leading-relaxed"></div>
+            <!-- Resumen disponibilidad -->
+            <div id="modal-resumen" class="px-6 py-3 border-b border-linea flex flex-wrap gap-4 text-[13px] font-mono"></div>
+            <!-- Unidades -->
+            <div id="modal-unidades" class="p-6">
+              <p class="text-gris text-[14px]">Cargando unidades…</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1013,6 +1068,140 @@
       btnMenu.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
     });
   });
+
+  /* -------- Proyectos -------- */
+  (function () {
+    const SB_URL2 = 'https://olhjuvbquwbyhpbvzdol.supabase.co';
+    const SB_KEY2 = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9saGp1dmJxdXdieWhwYnZ6ZG9sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAxMzA0NjcsImV4cCI6MjEwNTcwNjQ2N30.C_cm7N69DKLZLTxng3epuMw5P3J1KgXyljJ6FHRUtIw';
+    const hdrs = { 'apikey': SB_KEY2, 'Authorization': 'Bearer ' + SB_KEY2 };
+
+    async function fetchJSON(url) {
+      const r = await fetch(url, { headers: hdrs });
+      return r.ok ? r.json() : [];
+    }
+
+    function badgeDisp(d) {
+      if (d === 'reservado') return '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;padding:2px 8px;border-radius:9999px;border:1px solid #f59e0b;color:#92400e;background:#fef3c7">Reservado</span>';
+      if (d === 'vendido')   return '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;padding:2px 8px;border-radius:9999px;border:1px solid #d1d5db;color:#6b7280;background:#f9fafb">Vendido</span>';
+      return '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;padding:2px 8px;border-radius:9999px;border:1px solid #6ee7b7;color:#065f46;background:#ecfdf5">Disponible</span>';
+    }
+
+    function trioIcono(v) {
+      if (v === 'verificado') return '<i class="fa-solid fa-circle-check" style="color:#10b981;font-size:12px" title="Trío Saneado verificado"></i>';
+      if (v === 'en-proceso') return '<i class="fa-solid fa-circle-half-stroke" style="color:#f59e0b;font-size:12px" title="En verificación"></i>';
+      return '';
+    }
+
+    async function renderProyectos() {
+      const grid = document.getElementById('grid-proyectos');
+      const vacio = document.getElementById('proyectos-vacio');
+      const ctr   = document.getElementById('proyectos-contador');
+      try {
+        const proyectos = await fetchJSON(`${SB_URL2}/rest/v1/proyectos?order=created_at.desc`);
+        if (!proyectos.length) { vacio && (vacio.style.display = ''); return; }
+        vacio && (vacio.style.display = 'none');
+        ctr.textContent = proyectos.length + (proyectos.length === 1 ? ' proyecto' : ' proyectos');
+
+        // Para cada proyecto contar unidades disponibles
+        const conteos = await Promise.all(proyectos.map(p =>
+          fetchJSON(`${SB_URL2}/rest/v1/unidades?proyecto_id=eq.${p.id}&select=disponibilidad`)
+        ));
+
+        grid.querySelectorAll('.proy-card').forEach(c => c.remove());
+
+        proyectos.forEach((p, i) => {
+          const uns = conteos[i] || [];
+          const total = uns.length;
+          const disp  = uns.filter(u => u.disponibilidad === 'disponible').length;
+          const card  = document.createElement('article');
+          card.className = 'proy-card border border-white/15 rounded-sm overflow-hidden flex flex-col cursor-pointer hover:border-rojo/50 transition-colors';
+          card.onclick = () => abrirProyecto(p);
+          card.innerHTML = `
+            ${p.portada
+              ? `<div style="height:180px;overflow:hidden"><img src="${p.portada}" alt="${p.nombre}" style="width:100%;height:100%;object-fit:cover" loading="lazy"></div>`
+              : `<div style="height:120px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center"><i class="fa-solid fa-building" style="font-size:32px;opacity:.2;color:white"></i></div>`}
+            <div style="padding:1.25rem;flex:1;display:flex;flex-direction:column;gap:0.6rem">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#A5333F;text-transform:uppercase">${p.tipo || 'Proyecto'} · ${p.zona || ''}</span>
+              <h3 style="font-family:'Source Serif 4',Georgia,serif;font-size:18px;font-weight:600;color:#F7F5F2;line-height:1.25">${p.nombre}</h3>
+              ${p.descripcion ? `<p style="font-size:14px;color:rgba(247,245,242,0.6);line-height:1.55;flex:1">${p.descripcion.slice(0,100)}${p.descripcion.length>100?'…':''}</p>` : ''}
+              <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:0.75rem;display:flex;align-items:center;justify-content:space-between">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(247,245,242,0.5)">${total} ${total===1?'unidad':'unidades'} · ${disp} disponible${disp!==1?'s':''}</span>
+                <span style="font-size:13px;color:#A5333F;font-weight:600">Ver unidades <i class="fa-solid fa-arrow-right" style="font-size:11px"></i></span>
+              </div>
+            </div>`;
+          grid.appendChild(card);
+        });
+      } catch(e) { console.error('Error proyectos', e); }
+    }
+
+    async function abrirProyecto(p) {
+      const modal = document.getElementById('modal-proyecto');
+      document.getElementById('modal-tipo').textContent    = (p.tipo || 'Proyecto').toUpperCase();
+      document.getElementById('modal-titulo').textContent  = p.nombre;
+      document.getElementById('modal-zona').textContent    = p.zona || '';
+      document.getElementById('modal-desc').textContent    = p.descripcion || '';
+      document.getElementById('modal-resumen').innerHTML   = '<span class="text-paper/50 text-[13px] font-mono">Cargando…</span>';
+      document.getElementById('modal-unidades').innerHTML  = '<p class="text-gris text-[14px]">Cargando unidades…</p>';
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      try {
+        const uns = await fetchJSON(`${SB_URL2}/rest/v1/unidades?proyecto_id=eq.${p.id}&order=created_at.asc`);
+        const disp = uns.filter(u => u.disponibilidad === 'disponible').length;
+        const res  = uns.filter(u => u.disponibilidad === 'reservado').length;
+        const vend = uns.filter(u => u.disponibilidad === 'vendido').length;
+
+        document.getElementById('modal-resumen').innerHTML = `
+          <span style="color:rgba(247,245,242,0.7)"><span style="color:#10b981;font-weight:600">${disp}</span> disponible${disp!==1?'s':''}</span>
+          <span style="color:rgba(247,245,242,0.7)"><span style="color:#f59e0b;font-weight:600">${res}</span> reservado${res!==1?'s':''}</span>
+          <span style="color:rgba(247,245,242,0.7)"><span style="color:#6b7280;font-weight:600">${vend}</span> vendido${vend!==1?'s':''}</span>`;
+
+        if (!uns.length) {
+          document.getElementById('modal-unidades').innerHTML = '<p class="text-gris text-[14px] py-4">Este proyecto aún no tiene unidades registradas.</p>';
+          return;
+        }
+
+        document.getElementById('modal-unidades').innerHTML = `
+          <h4 style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7C1F2A;margin-bottom:1rem;letter-spacing:.04em">UNIDADES</h4>
+          <div style="display:grid;gap:12px">${uns.map(u => {
+            const foto = u.fotos && u.fotos[0] ? u.fotos[0] : null;
+            const msg  = encodeURIComponent(`Hola Fernando, me interesa la unidad ${u.identificador || ''} del proyecto ${p.nombre}. ¿Está disponible?`);
+            return `<div style="border:1px solid #E4E1DB;border-radius:2px;display:flex;gap:12px;align-items:flex-start;padding:14px;background:white;${u.disponibilidad==='vendido'?'opacity:.55':''}">
+              ${foto ? `<img src="${foto}" style="width:80px;height:64px;object-fit:cover;border-radius:2px;flex-shrink:0" alt="" loading="lazy">` : ''}
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7C1F2A">${u.identificador || u.tipo || 'Unidad'}</span>
+                  <div style="display:flex;gap:6px;align-items:center">${trioIcono(u.trio)} ${badgeDisp(u.disponibilidad)}</div>
+                </div>
+                <div style="display:flex;gap:12px;font-size:13px;color:#5C5955;font-family:'IBM Plex Mono',monospace;flex-wrap:wrap">
+                  ${u.superficie ? `<span>${u.superficie} m²</span>` : ''}
+                  ${u.dormitorios ? `<span>${u.dormitorios} dorm.</span>` : ''}
+                  ${u.precio_usd ? `<span style="color:#141210;font-weight:600">USD ${Number(u.precio_usd).toLocaleString('es-BO')}</span>` : ''}
+                  ${u.precio_bob ? `<span style="color:#5C5955">BOB ${Number(u.precio_bob).toLocaleString('es-BO')}</span>` : ''}
+                </div>
+                ${u.descripcion ? `<p style="font-size:13px;color:#5C5955;margin-top:4px;line-height:1.5">${u.descripcion}</p>` : ''}
+              </div>
+              ${u.disponibilidad !== 'vendido' ? `
+              <a href="https://wa.me/59172056804?text=${msg}" target="_blank" rel="noopener"
+                 style="flex-shrink:0;background:#7C1F2A;color:white;font-size:13px;font-weight:600;padding:8px 12px;border-radius:2px;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap"
+                 onmouseover="this.style.background='#A5333F'" onmouseout="this.style.background='#7C1F2A'">
+                <i class="fa-brands fa-whatsapp"></i> Consultar
+              </a>` : ''}
+            </div>`;
+          }).join('')}</div>`;
+      } catch(e) {
+        document.getElementById('modal-unidades').innerHTML = '<p class="text-red-600 text-[14px]">Error al cargar las unidades.</p>';
+      }
+    }
+
+    window.cerrarModal = function() {
+      document.getElementById('modal-proyecto').classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') window.cerrarModal(); });
+
+    renderProyectos();
+  })();
 
   /* -------- Propiedades en cartera -------- */
   (function () {

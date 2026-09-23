@@ -101,7 +101,8 @@
   <div class="max-w-5xl mx-auto px-5 py-10">
     <div class="flex gap-1 border-b border-linea mb-10">
       <button class="tab-btn px-5 py-2.5 text-[15px] font-medium border-b-2 border-rojo text-rojo" data-tab="lista">Propiedades</button>
-      <button class="tab-btn px-5 py-2.5 text-[15px] font-medium border-b-2 border-transparent text-gris" data-tab="nueva">+ Nueva</button>
+      <button class="tab-btn px-5 py-2.5 text-[15px] font-medium border-b-2 border-transparent text-gris" data-tab="proyectos">Proyectos</button>
+      <button class="tab-btn px-5 py-2.5 text-[15px] font-medium border-b-2 border-transparent text-gris" data-tab="nueva">+ Nueva prop.</button>
       <button class="tab-btn px-5 py-2.5 text-[15px] font-medium border-b-2 border-transparent text-gris" data-tab="config">Configuración</button>
     </div>
 
@@ -219,6 +220,177 @@
       </div>
     </div>
 
+    <!-- TAB PROYECTOS -->
+    <div id="tab-proyectos" class="tab-contenido hidden">
+
+      <!-- Vista: lista de proyectos -->
+      <div id="proy-vista-lista">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-semibold">Proyectos</h2>
+          <button class="btn-primary text-[14px]" onclick="mostrarFormProyecto()">
+            <i class="fa-solid fa-plus mr-1.5"></i>Nuevo proyecto
+          </button>
+        </div>
+        <div id="lista-proyectos" class="space-y-3">
+          <p class="text-gris text-[15px] py-8 text-center border border-dashed border-linea rounded">Cargando…</p>
+        </div>
+      </div>
+
+      <!-- Vista: formulario proyecto -->
+      <div id="proy-vista-form" class="hidden">
+        <div class="flex items-center gap-3 mb-8">
+          <button onclick="volverListaProyectos()" class="text-gris hover:text-ink text-[14px]">
+            <i class="fa-solid fa-arrow-left mr-1"></i>Volver
+          </button>
+          <h2 id="proy-form-titulo" class="text-xl font-semibold">Nuevo proyecto</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-x-8 gap-y-1 max-w-2xl">
+          <div class="campo md:col-span-2">
+            <label>NOMBRE DEL PROYECTO *</label>
+            <input type="text" id="pf-nombre" placeholder="Ej: Edificio Ayacucho, Condominio Las Américas">
+          </div>
+          <div class="campo">
+            <label>TIPO</label>
+            <select id="pf-tipo">
+              <option value="Edificio">Edificio</option>
+              <option value="Condominio">Condominio</option>
+              <option value="Fraccionamiento">Fraccionamiento de lotes</option>
+              <option value="Conjunto residencial">Conjunto residencial</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label>ZONA</label>
+            <select id="pf-zona">
+              <option value="">Seleccionar…</option>
+              <option value="Achumani">Achumani</option>
+              <option value="Irpavi">Irpavi</option>
+              <option value="Obrajes">Obrajes</option>
+              <option value="Calacoto">Calacoto</option>
+              <option value="Sopocachi">Sopocachi</option>
+              <option value="Otra">Otra</option>
+            </select>
+          </div>
+          <div class="campo md:col-span-2">
+            <label>DESCRIPCIÓN</label>
+            <textarea id="pf-descripcion" rows="3" placeholder="Descripción general del proyecto."></textarea>
+          </div>
+          <div class="campo md:col-span-2">
+            <label>FOTO DE PORTADA</label>
+            <div id="pf-portada-preview" class="hidden mb-2 relative" style="max-width:240px">
+              <img id="pf-portada-img" src="" alt="" class="w-full rounded-sm border border-linea" style="max-height:160px;object-fit:cover">
+              <button onclick="quitarPortada()" class="absolute top-2 right-2 bg-black/60 text-white rounded-full w-6 h-6 text-[12px] flex items-center justify-center">×</button>
+            </div>
+            <label class="btn-secondary cursor-pointer inline-flex items-center gap-2 text-[13px]">
+              <i class="fa-solid fa-upload"></i>Subir portada
+              <input type="file" id="pf-portada-input" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="subirPortada(this)">
+            </label>
+            <p class="text-[12px] text-gris mt-1.5">JPG o PNG, máx. 5 MB.</p>
+            <div class="upload-progress mt-2" id="portada-progress"><div class="upload-progress-bar" id="portada-progress-bar" style="width:0%"></div></div>
+          </div>
+        </div>
+        <div id="pf-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-[14px] px-4 py-3 rounded mt-2 mb-4 max-w-2xl"></div>
+        <div class="flex gap-3 mt-6 pt-6 border-t border-linea">
+          <button id="pf-btn-guardar" class="btn-primary" onclick="guardarProyecto()">
+            <i class="fa-solid fa-floppy-disk mr-2"></i>Guardar proyecto
+          </button>
+          <button class="btn-secondary" onclick="volverListaProyectos()">Cancelar</button>
+        </div>
+      </div>
+
+      <!-- Vista: unidades de un proyecto -->
+      <div id="proy-vista-unidades" class="hidden">
+        <div class="flex items-center gap-3 mb-2">
+          <button onclick="volverListaProyectos()" class="text-gris hover:text-ink text-[14px]">
+            <i class="fa-solid fa-arrow-left mr-1"></i>Volver
+          </button>
+          <h2 id="unidades-titulo" class="text-xl font-semibold"></h2>
+        </div>
+        <p id="unidades-subtitulo" class="text-[13px] font-mono text-gris mb-6"></p>
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-semibold text-[16px]">Unidades</h3>
+          <button class="btn-primary text-[14px]" onclick="mostrarFormUnidad()">
+            <i class="fa-solid fa-plus mr-1.5"></i>Nueva unidad
+          </button>
+        </div>
+        <div id="lista-unidades" class="space-y-3 mb-8"></div>
+
+        <!-- Formulario de unidad (inline) -->
+        <div id="form-unidad" class="hidden border border-linea rounded-sm p-6 bg-white">
+          <h4 id="fu-titulo" class="font-semibold mb-5">Nueva unidad</h4>
+          <div class="grid md:grid-cols-2 gap-x-6 gap-y-1">
+            <div class="campo">
+              <label>IDENTIFICADOR (Ej: Dpto. 4B, Lote 12)</label>
+              <input type="text" id="fu-id" placeholder="Dpto. 4B">
+            </div>
+            <div class="campo">
+              <label>TIPO</label>
+              <select id="fu-tipo">
+                <option value="Departamento">Departamento</option>
+                <option value="Lote">Lote</option>
+                <option value="Casa">Casa</option>
+                <option value="Local">Local comercial</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label>PRECIO USD</label>
+              <input type="number" id="fu-usd" placeholder="85000" min="0">
+            </div>
+            <div class="campo">
+              <label>PRECIO BOB</label>
+              <input type="number" id="fu-bob" placeholder="587500" min="0">
+            </div>
+            <div class="campo">
+              <label>SUPERFICIE (m²)</label>
+              <input type="number" id="fu-sup" placeholder="120" min="0">
+            </div>
+            <div class="campo">
+              <label>DORMITORIOS</label>
+              <select id="fu-dorm">
+                <option value="">—</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5+">5+</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label>DISPONIBILIDAD</label>
+              <select id="fu-disp">
+                <option value="disponible">✓ Disponible</option>
+                <option value="reservado">⏳ Reservado</option>
+                <option value="vendido">✗ Vendido</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label>TRÍO SANEADO</label>
+              <select id="fu-trio">
+                <option value="verificado">✓ Verificado</option>
+                <option value="en-proceso">En proceso</option>
+                <option value="pendiente">Pendiente</option>
+              </select>
+            </div>
+            <div class="campo md:col-span-2">
+              <label>DESCRIPCIÓN</label>
+              <textarea id="fu-desc" rows="2" placeholder="Características de esta unidad."></textarea>
+            </div>
+            <div class="campo md:col-span-2">
+              <label>FOTOS (hasta 6)</label>
+              <div class="fotos-grid" id="fu-fotos-grid"></div>
+              <div class="upload-progress mt-2" id="fu-progress"><div class="upload-progress-bar" id="fu-progress-bar" style="width:0%"></div></div>
+            </div>
+          </div>
+          <div id="fu-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-[14px] px-4 py-3 rounded mb-3"></div>
+          <div class="flex gap-3 mt-4 pt-4 border-t border-linea">
+            <button id="fu-btn" class="btn-primary text-[14px]" onclick="guardarUnidad()"><i class="fa-solid fa-floppy-disk mr-1.5"></i>Guardar unidad</button>
+            <button class="btn-secondary text-[13px]" onclick="cancelarUnidad()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- TAB CONFIG -->
     <div id="tab-config" class="tab-contenido hidden">
       <h2 class="text-xl font-semibold mb-8">Configuración</h2>
@@ -245,6 +417,7 @@
 
 <!-- Input file oculto para subir fotos -->
 <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="subirFoto(this)">
+<input type="file" id="file-input-unidad" accept="image/jpeg,image/png,image/webp" class="hidden" onchange="subirFotoUnidad(this)">
 
 <script>
 // ============================================================
@@ -676,8 +849,352 @@ async function confirmarEliminarTodo() {
 }
 
 // ============================================================
-// CONFIGURACIÓN — CONTRASEÑA
+// PROYECTOS Y UNIDADES
 // ============================================================
+let proyectoActualId   = null;
+let proyectoActualNomb = null;
+let editandoProyId     = null;
+let editandoUnidId     = null;
+let portadaUrl         = null;
+let fotasUnidad        = [];
+let slotUnidadIdx      = -1;
+
+// --- Helpers fetch ---
+async function sbGetP(tabla, q = '') {
+  const r = await fetch(`${SB_URL}/rest/v1/${tabla}?${q}`, { headers: h() });
+  return r.ok ? r.json() : [];
+}
+async function sbInsP(tabla, data) {
+  const r = await fetch(`${SB_URL}/rest/v1/${tabla}`, {
+    method: 'POST', headers: { ...h(), 'Prefer': 'return=representation' }, body: JSON.stringify(data)
+  });
+  return r.json();
+}
+async function sbUpdP(tabla, id, data) {
+  const r = await fetch(`${SB_URL}/rest/v1/${tabla}?id=eq.${id}`, {
+    method: 'PATCH', headers: { ...h(), 'Prefer': 'return=representation' }, body: JSON.stringify(data)
+  });
+  return r.json();
+}
+async function sbDelP(tabla, id) {
+  await fetch(`${SB_URL}/rest/v1/${tabla}?id=eq.${id}`, { method: 'DELETE', headers: h() });
+}
+
+function badgeDispAdmin(d) {
+  if (d === 'reservado') return '<span class="badge" style="color:#92400e;border-color:#f59e0b">Reservado</span>';
+  if (d === 'vendido')   return '<span class="badge" style="color:#6b7280;border-color:#d1d5db">Vendido</span>';
+  return '<span class="badge" style="color:#065f46;border-color:#6ee7b7">Disponible</span>';
+}
+
+// --- Vistas ---
+function mostrarVistaP(nombre) {
+  ['proy-vista-lista','proy-vista-form','proy-vista-unidades'].forEach(id => {
+    document.getElementById(id).classList.toggle('hidden', id !== nombre);
+  });
+}
+
+function volverListaProyectos() {
+  editandoProyId = null; portadaUrl = null;
+  limpiarFormProyecto();
+  mostrarVistaP('proy-vista-lista');
+  renderListaProyectos();
+}
+
+// --- Lista proyectos ---
+async function renderListaProyectos() {
+  const cont = document.getElementById('lista-proyectos');
+  cont.innerHTML = '<p class="text-gris text-[15px] py-4">Cargando…</p>';
+  const proyectos = await sbGetP('proyectos', 'order=created_at.desc');
+  if (!Array.isArray(proyectos) || !proyectos.length) {
+    cont.innerHTML = '<p class="text-gris text-[15px] py-8 text-center border border-dashed border-linea rounded">Aún no hay proyectos.</p>';
+    return;
+  }
+  const conteos = await Promise.all(proyectos.map(p =>
+    sbGetP('unidades', `proyecto_id=eq.${p.id}&select=disponibilidad`)
+  ));
+  cont.innerHTML = proyectos.map((p, i) => {
+    const uns  = conteos[i] || [];
+    const disp = uns.filter(u => u.disponibilidad === 'disponible').length;
+    const foto = p.portada ? `<img src="${p.portada}" class="foto-thumb" alt="" onerror="this.style.display='none'">` : '<div class="foto-thumb flex items-center justify-center text-gris text-[11px] font-mono">SIN FOTO</div>';
+    return `<div class="ficha-admin">
+      ${foto}
+      <div class="flex-1 min-w-0">
+        <p class="font-semibold text-[15px]">${p.nombre}</p>
+        <p class="text-[13px] text-gris font-mono mt-1">${p.tipo || '—'} · ${p.zona || '—'}</p>
+        <p class="text-[13px] text-gris mt-1">${uns.length} unidad${uns.length!==1?'es':''} · <span style="color:#065f46">${disp} disponible${disp!==1?'s':''}</span></p>
+      </div>
+      <div class="flex flex-col gap-2 shrink-0">
+        <button class="btn-secondary text-[12px]" onclick="abrirUnidades('${p.id}','${p.nombre.replace(/'/g,"\\'")}')"><i class="fa-solid fa-list"></i> Unidades</button>
+        <button class="btn-secondary text-[12px]" onclick="editarProyecto('${p.id}')"><i class="fa-solid fa-pen"></i> Editar</button>
+        <button class="btn-danger text-[12px]" onclick="eliminarProyecto('${p.id}')"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// --- Formulario proyecto ---
+function mostrarFormProyecto() {
+  editandoProyId = null; portadaUrl = null;
+  limpiarFormProyecto();
+  document.getElementById('proy-form-titulo').textContent = 'Nuevo proyecto';
+  mostrarVistaP('proy-vista-form');
+}
+
+function limpiarFormProyecto() {
+  ['pf-nombre','pf-descripcion'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('pf-tipo').value = 'Edificio';
+  document.getElementById('pf-zona').value = '';
+  document.getElementById('pf-portada-preview').classList.add('hidden');
+  document.getElementById('pf-error').classList.add('hidden');
+  portadaUrl = null;
+}
+
+async function editarProyecto(id) {
+  const data = await sbGetP('proyectos', `id=eq.${id}`);
+  if (!data || !data[0]) return;
+  const p = data[0];
+  editandoProyId = id;
+  document.getElementById('pf-nombre').value      = p.nombre || '';
+  document.getElementById('pf-tipo').value         = p.tipo || 'Edificio';
+  document.getElementById('pf-zona').value         = p.zona || '';
+  document.getElementById('pf-descripcion').value  = p.descripcion || '';
+  portadaUrl = p.portada || null;
+  if (portadaUrl) {
+    document.getElementById('pf-portada-img').src = portadaUrl;
+    document.getElementById('pf-portada-preview').classList.remove('hidden');
+  }
+  document.getElementById('proy-form-titulo').textContent = 'Editar proyecto';
+  mostrarVistaP('proy-vista-form');
+}
+
+async function guardarProyecto() {
+  const nombre = document.getElementById('pf-nombre').value.trim();
+  const err    = document.getElementById('pf-error');
+  if (!nombre) { err.textContent = 'El nombre es obligatorio.'; err.classList.remove('hidden'); return; }
+  const btn = document.getElementById('pf-btn-guardar');
+  btn.disabled = true; btn.textContent = 'Guardando…';
+  const data = {
+    nombre, tipo: document.getElementById('pf-tipo').value,
+    zona:         document.getElementById('pf-zona').value,
+    descripcion:  document.getElementById('pf-descripcion').value.trim(),
+    portada:      portadaUrl || null
+  };
+  try {
+    let res;
+    if (editandoProyId) res = await sbUpdP('proyectos', editandoProyId, data);
+    else                res = await sbInsP('proyectos', data);
+    if (res && (Array.isArray(res) ? res[0] : res).id) {
+      mostrarToast(editandoProyId ? 'Proyecto actualizado.' : 'Proyecto creado.');
+      volverListaProyectos();
+    } else { mostrarToast('Error al guardar.', false); }
+  } catch { mostrarToast('Error de conexión.', false); }
+  finally { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-floppy-disk mr-2"></i>Guardar proyecto'; }
+}
+
+async function eliminarProyecto(id) {
+  if (!confirm('¿Eliminar este proyecto y todas sus unidades?')) return;
+  await sbDelP('proyectos', id);
+  renderListaProyectos();
+  mostrarToast('Proyecto eliminado.');
+}
+
+// --- Portada del proyecto ---
+async function subirPortada(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { mostrarToast('Imagen mayor a 5 MB.', false); return; }
+  const prog = document.getElementById('portada-progress');
+  const bar  = document.getElementById('portada-progress-bar');
+  prog.style.display = 'block'; bar.style.width = '40%';
+  const ext  = file.name.split('.').pop().toLowerCase();
+  const path = `portada_${Date.now()}.${ext}`;
+  try {
+    bar.style.width = '70%';
+    const res = await sbUpload(path, file);
+    bar.style.width = '100%';
+    if (res.error) { mostrarToast('Error: ' + res.error.message, false); }
+    else {
+      portadaUrl = sbPublicUrl(path);
+      document.getElementById('pf-portada-img').src = portadaUrl;
+      document.getElementById('pf-portada-preview').classList.remove('hidden');
+      mostrarToast('Portada subida.');
+    }
+  } catch { mostrarToast('Error al subir portada.', false); }
+  finally { setTimeout(() => { prog.style.display = 'none'; bar.style.width = '0%'; }, 600); input.value = ''; }
+}
+
+function quitarPortada() {
+  portadaUrl = null;
+  document.getElementById('pf-portada-preview').classList.add('hidden');
+  document.getElementById('pf-portada-img').src = '';
+}
+
+// --- Unidades ---
+async function abrirUnidades(proyId, proyNombre) {
+  proyectoActualId   = proyId;
+  proyectoActualNomb = proyNombre;
+  editandoUnidId     = null;
+  fotasUnidad        = [];
+  document.getElementById('unidades-titulo').textContent   = proyNombre;
+  document.getElementById('unidades-subtitulo').textContent = 'Proyecto · Gestión de unidades';
+  document.getElementById('form-unidad').classList.add('hidden');
+  mostrarVistaP('proy-vista-unidades');
+  await renderListaUnidades();
+}
+
+async function renderListaUnidades() {
+  const cont = document.getElementById('lista-unidades');
+  cont.innerHTML = '<p class="text-gris text-[14px]">Cargando…</p>';
+  const uns = await sbGetP('unidades', `proyecto_id=eq.${proyectoActualId}&order=created_at.asc`);
+  if (!uns.length) {
+    cont.innerHTML = '<p class="text-gris text-[14px] py-4 text-center border border-dashed border-linea rounded">Sin unidades. Añada la primera.</p>';
+    return;
+  }
+  cont.innerHTML = uns.map(u => {
+    const foto = u.fotos && u.fotos[0] ? `<img src="${u.fotos[0]}" class="foto-thumb" alt="" onerror="this.style.display='none'">` : '<div class="foto-thumb flex items-center justify-center text-gris text-[11px] font-mono">SIN FOTO</div>';
+    return `<div class="ficha-admin ${u.disponibilidad==='vendido'?'opacity-60':''}">
+      ${foto}
+      <div class="flex-1 min-w-0">
+        <div class="flex gap-2 items-center flex-wrap">
+          <p class="font-semibold text-[14px]">${u.identificador || u.tipo || 'Unidad'}</p>
+          ${badgeDispAdmin(u.disponibilidad)}
+        </div>
+        <div class="flex gap-3 text-[13px] text-gris font-mono mt-1 flex-wrap">
+          ${u.superficie ? `<span>${u.superficie} m²</span>` : ''}
+          ${u.dormitorios ? `<span>${u.dormitorios} dorm.</span>` : ''}
+          ${u.precio_usd ? `<span>USD ${Number(u.precio_usd).toLocaleString()}</span>` : ''}
+          ${u.precio_bob ? `<span>BOB ${Number(u.precio_bob).toLocaleString()}</span>` : ''}
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 shrink-0">
+        <button class="btn-secondary text-[12px]" onclick="editarUnidad('${u.id}')"><i class="fa-solid fa-pen"></i> Editar</button>
+        <button class="btn-danger text-[12px]" onclick="eliminarUnidad('${u.id}')"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function mostrarFormUnidad(u = null) {
+  editandoUnidId = u ? u.id : null;
+  fotasUnidad    = u && u.fotos ? [...u.fotos] : [];
+  document.getElementById('fu-id').value   = u ? (u.identificador || '') : '';
+  document.getElementById('fu-tipo').value  = u ? (u.tipo || 'Departamento') : 'Departamento';
+  document.getElementById('fu-usd').value   = u ? (u.precio_usd || '') : '';
+  document.getElementById('fu-bob').value   = u ? (u.precio_bob || '') : '';
+  document.getElementById('fu-sup').value   = u ? (u.superficie || '') : '';
+  document.getElementById('fu-dorm').value  = u ? (u.dormitorios || '') : '';
+  document.getElementById('fu-disp').value  = u ? (u.disponibilidad || 'disponible') : 'disponible';
+  document.getElementById('fu-trio').value  = u ? (u.trio || 'verificado') : 'verificado';
+  document.getElementById('fu-desc').value  = u ? (u.descripcion || '') : '';
+  document.getElementById('fu-titulo').textContent = u ? 'Editar unidad' : 'Nueva unidad';
+  document.getElementById('fu-error').classList.add('hidden');
+  renderFotasUnidad();
+  document.getElementById('form-unidad').classList.remove('hidden');
+  document.getElementById('form-unidad').scrollIntoView({ behavior: 'smooth' });
+}
+
+function cancelarUnidad() {
+  editandoUnidId = null; fotasUnidad = [];
+  document.getElementById('form-unidad').classList.add('hidden');
+}
+
+async function editarUnidad(id) {
+  const data = await sbGetP('unidades', `id=eq.${id}`);
+  if (data && data[0]) mostrarFormUnidad(data[0]);
+}
+
+async function guardarUnidad() {
+  const btn = document.getElementById('fu-btn');
+  btn.disabled = true; btn.textContent = 'Guardando…';
+  const data = {
+    proyecto_id:   proyectoActualId,
+    identificador: document.getElementById('fu-id').value.trim(),
+    tipo:          document.getElementById('fu-tipo').value,
+    precio_usd:    document.getElementById('fu-usd').value || null,
+    precio_bob:    document.getElementById('fu-bob').value || null,
+    superficie:    document.getElementById('fu-sup').value || null,
+    dormitorios:   document.getElementById('fu-dorm').value || null,
+    disponibilidad:document.getElementById('fu-disp').value,
+    trio:          document.getElementById('fu-trio').value,
+    descripcion:   document.getElementById('fu-desc').value.trim(),
+    fotos:         fotasUnidad.filter(Boolean)
+  };
+  try {
+    let res;
+    if (editandoUnidId) res = await sbUpdP('unidades', editandoUnidId, data);
+    else                res = await sbInsP('unidades', data);
+    if (res && (Array.isArray(res) ? res[0] : res).id) {
+      cancelarUnidad();
+      await renderListaUnidades();
+      mostrarToast(editandoUnidId ? 'Unidad actualizada.' : 'Unidad guardada.');
+    } else { mostrarToast('Error al guardar.', false); }
+  } catch { mostrarToast('Error de conexión.', false); }
+  finally { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-floppy-disk mr-1.5"></i>Guardar unidad'; }
+}
+
+async function eliminarUnidad(id) {
+  if (!confirm('¿Eliminar esta unidad?')) return;
+  await sbDelP('unidades', id);
+  await renderListaUnidades();
+  mostrarToast('Unidad eliminada.');
+}
+
+// --- Fotos de unidades ---
+function renderFotasUnidad() {
+  const grid = document.getElementById('fu-fotos-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  for (let i = 0; i < 6; i++) {
+    const url  = fotasUnidad[i] || null;
+    const slot = document.createElement('div');
+    slot.className = 'foto-slot';
+    slot.innerHTML = url
+      ? `<img src="${url}" alt="Foto ${i+1}"><button class="remove-foto" onclick="quitarFotoUnidad(${i},event)">×</button>`
+      : `<span style="font-size:11px;font-family:'IBM Plex Mono',monospace;color:#5C5955;text-align:center;padding:8px"><i class="fa-solid fa-plus" style="font-size:18px;display:block;margin-bottom:4px;color:#E4E1DB"></i>Foto ${i+1}</span>`;
+    if (!url) slot.addEventListener('click', () => { slotUnidadIdx = i; document.getElementById('file-input-unidad').click(); });
+    grid.appendChild(slot);
+  }
+}
+
+async function subirFotoUnidad(input) {
+  const file = input.files[0];
+  if (!file || slotUnidadIdx < 0) return;
+  if (file.size > 5*1024*1024) { mostrarToast('Imagen mayor a 5 MB.', false); return; }
+  const prog = document.getElementById('fu-progress');
+  const bar  = document.getElementById('fu-progress-bar');
+  prog.style.display = 'block'; bar.style.width = '40%';
+  const ext  = file.name.split('.').pop().toLowerCase();
+  const path = `unidad_${Date.now()}_${slotUnidadIdx}.${ext}`;
+  try {
+    bar.style.width = '70%';
+    const res = await sbUpload(path, file);
+    bar.style.width = '100%';
+    if (res.error) mostrarToast('Error: ' + res.error.message, false);
+    else {
+      fotasUnidad[slotUnidadIdx] = sbPublicUrl(path);
+      renderFotasUnidad();
+      mostrarToast('Foto subida.');
+    }
+  } catch { mostrarToast('Error al subir.', false); }
+  finally { setTimeout(() => { prog.style.display = 'none'; bar.style.width = '0%'; }, 600); input.value = ''; slotUnidadIdx = -1; }
+}
+
+function quitarFotoUnidad(i, e) {
+  e.stopPropagation();
+  fotasUnidad.splice(i, 1);
+  renderFotasUnidad();
+}
+
+// Inicializar proyectos cuando se activa esa pestaña
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.dataset.tab === 'proyectos') {
+      mostrarVistaP('proy-vista-lista');
+      renderListaProyectos();
+    }
+  });
+});
+
 function cambiarPassword() {
   const actual   = document.getElementById('cfg-actual').value;
   const nueva    = document.getElementById('cfg-nueva').value;
